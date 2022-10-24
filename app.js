@@ -23,11 +23,12 @@ const fetchPokemon = () => {
 const displayPokemon = (pokemon) => {
     console.log(pokemon);
     const pokemonHTMLString = pokemon.map (pokeman => `
-    <li>
-        <img src="${pokeman.image}" width="120" height="120"/>
-        <h2>${pokeman.id}. ${pokeman.name}</h2>
-        <p>Type: ${pokeman.type}</p>
-    </li>
+    <div class="card">
+        <img class="card-img" src="${pokeman.image}"/>
+        <h2 class="card-num">#${pokeman.id.toString().padStart(3,'0')}</h2>
+        <h2 class="card-title">${pokeman.name}</h2>
+        <p class="card-subtitle">Type: ${pokeman.type}</p>
+    </div>
     `).join('');
     pokedex.innerHTML = pokemonHTMLString;
 }
