@@ -8,10 +8,13 @@ body{
 .card{
     list-style: none;
     padding: 40px;
-    background-image: linear-gradient(#FF0000,#3B4CCA);
+    background-color: #FF0000;
     color: white;
     display: grid;
     text-align: center;
+    border-radius: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .card-num{
@@ -27,11 +30,12 @@ body{
     font-weight: normal;
     margin-bottom: 0;
     margin-top: 0;
+    color: white;
 }
 
-.card-subtitle{
+.card-subtitle, p{
     font-weight: lighter;
-    color: navajowhite;
+    color: black;
     margin-top: 5px;
 }
 
@@ -46,4 +50,56 @@ body{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-gap: 20px;
+}
+
+.card-titlePop{
+    color: black;
+    font-size: 38px;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #f4f4f4;
+    opacity: 0.95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardPop {
+    list-style: none;
+    padding: 40px;
+    color: black;
+    display: grid;
+    text-align: center;
+}
+
+.info {
+    font-weight: normal;
+    font-size: 28px;
+    color: black;
+    margin-top: 5px;
+}
+
+.card-imgPop{
+    height: 600px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+#closeBtn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+button {
+    background-color: #FF0000;
+    padding: 10px 20px;
+    border: none;
+    color: white;
 }
