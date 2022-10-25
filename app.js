@@ -4,7 +4,7 @@ console.log(pokedex);
 
 const fetchPokemon = () => {
     const promises = [];
-    for (let i = 1; i <= 151; i++){
+    for (let i = 1; i <= 150; i++){
         const url = `https://updated-pokemon-apis-production.up.railway.app/pokemon/${i}`;
         promises.push(fetch(url).then((res)=> res.json()));
     }
