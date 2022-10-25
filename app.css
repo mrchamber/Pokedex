@@ -86,8 +86,8 @@ body{
 }
 
 .card-imgPop{
-    height: 600px;
-    width: 600px;
+    height: 200px;
+    width: 200px;
     margin: 0 auto;
 }
 
@@ -102,4 +102,11 @@ button {
     padding: 10px 20px;
     border: none;
     color: white;
+}
+table {
+    align-items: center;
+}
+
+th{
+    font-size: 32px;
 }

@@ -16,7 +16,12 @@ const fetchPokemon = () => {
             image: data.image,
             type: data.type,
             abilities: data.abilities,
-            stats: data.stats
+            HP: data.stats.HP,
+            Attack: data.stats.Attack,
+            Defense: data.stats.Defense,
+            SpAtk: data.stats.SpAtk,
+            SpDef: data.stats.SpDef,
+            Speed: data.stats.Speed
         }));
         displayPokemon(pokemon);
     });
@@ -50,7 +55,33 @@ const displayPopup = (pokeman)  => {
             <img class="card-imgPop" src="${pokeman.image}"/>
             <h2 class="card-num">#${pokeman.id.toString().padStart(3,'0')}</h2>
             <h2 class="card-titlePop">${pokeman.name}</h2>
-            <p class="info"><small>Type: </small>${pokeman.type} | <small>Abilites: </small>${pokeman.abilities} | <small>Height: </small>${pokeman.height} | <small>Weight: </small>${pokeman.weight} | <small>Stats: </small>${pokeman.stats}
+            <p class="info"><small>Type: </small>${pokeman.type} | <small>Abilites: </small>${pokeman.abilities} | <small>Height: </small>${pokeman.height} | <small>Weight: </small>${pokeman.weight}</p>
+            <table class="info">
+                <tr>
+                    <th>Base Stats</th>
+                    <th>Base Stats</th>
+                </tr>
+                <tr>
+                    <td>HP</td>
+                    <td>${pokeman.stats.HP}</td>
+                </tr>
+                    <td>Attack</td>
+                    <td>${pokeman.stats.Attack}</td>
+                <tr>
+                    <td>Defense</td>
+                     <td>${pokeman.stats.Defense}</td>
+                </tr>
+                    <td>Sp. Attack</td>
+                    <td>${pokeman.stats.SpAtk}</td>
+                <tr>
+                    <td>Sp. Defense</td>
+                    <td>${pokeman.stats.SpDef}</td>
+                </tr>
+                <tr>
+                    <td>Speed</td>  
+                    <td>${pokeman.stats.Speed}</td>   
+                </tr>
+            </table>
             </div>
         </div>`;
     pokedex.innerHTML = htmlString + pokedex.innerHTML;
