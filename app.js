@@ -1,5 +1,5 @@
 const poke_container = document.getElementById("poke-container");
-const pokemon_count = 151;
+const pokemon_count = 154;
 const colors = {
     generation1: "linear-gradient(180deg, " +'#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' +")",
     generation2: "linear-gradient(180deg, " +'#daa520' + ", " + '#c0c0c0' + ", " + '#4fd9ff' +")",
@@ -41,7 +41,6 @@ const  createPokemonCard = (pokemon) => {
             <div class="info">
                 <span class="number">#${id}</span>
                 <h3 class="name">${name}</h3>
-                <small class="type">Type: <span>${pokemon.type}</span></small>
             </div>
             `
     pokemonEl.innerHTML = pokemonHTMLString
