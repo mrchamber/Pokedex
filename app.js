@@ -1,12 +1,10 @@
 const poke_container = document.getElementById("poke-container");
-const pokemon_count = 154;
+const pokemon_count = 250;
 const colors = {
-    generation1: "linear-gradient(180deg, " +'#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' +")",
-    generation2: "linear-gradient(180deg, " +'#daa520' + ", " + '#c0c0c0' + ", " + '#4fd9ff' +")",
-    generation3: "linear-gradient(180deg, " +'#a00000' + ", " + '#0000a0' + ", " + '#00a000' +")",
+    generation1: "linear-gradient(145deg, " +'#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' +")",
+    generation2: "linear-gradient(145deg, " +'#daa520' + ", " + '#c0c0c0' + ", " + '#4fd9ff' +")",
+    generation3: "linear-gradient(145deg, " +'#a00000' + ", " + '#0000a0' + ", " + '#00a000' +")",
 }
-
-console.log(poke_container);
 
 const fetchPokemon =  async () => {
     for (let i = 1; i <= pokemon_count; i++) {
