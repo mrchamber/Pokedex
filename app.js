@@ -41,7 +41,6 @@ const  createPokemonCard = (pokemon) => {
             <div class="info">
                 <span class="number">#${id}</span>
                 <h3 class="name">${name}</h3>
-                <small class="type">Type: <span>${pokemon.type}</span></small>
             </div>
             `
     pokemonEl.innerHTML = pokemonHTMLString
