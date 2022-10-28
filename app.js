@@ -31,13 +31,15 @@ const  createPokemonCard = (pokemon) => {
 
 
     const pokemonHTMLString = `
-     <div class="img-container">
+     <div class="tile-card" onclick="selectPokemon(${pokemon.id})">
+        <div class="img-container">
                 <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokemon.id}.png">
             </div>
             <div class="info">
-                <span class="number" onclick="selectPokemon(${pokemon.id})">#${id}</span>
+                <span class="number">#${id}</span>
                 <h3 class="name">${name}</h3>
             </div>
+     </div>
             `
     pokemonEl.innerHTML = pokemonHTMLString;
 
@@ -53,7 +55,7 @@ const selectPokemon = async (id) => {
 
 const displayCard = (pokeman) => {
     const htmlString = `
-        <div class="poke-card">
+        <div class="poke_card" onclick="closeCard()">
             <div class="poke-card-body">
                 <div class="left-side">
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
@@ -104,6 +106,11 @@ const displayCard = (pokeman) => {
     `;
     poke_container.innerHTML = htmlString + poke_container.innerHTML;
     console.log(htmlString);
+};
+
+const closeCard = () => {
+    const card = document.querySelector('.poke_card');
+    card.parentElement.removeChild(card)
 }
 
 fetchPokemon();

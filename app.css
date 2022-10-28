@@ -69,7 +69,7 @@ h1{
     font-size: 0.8em;
 }
 
-.poke-card{
+.poke_card{
     position: fixed;
     top: 0;
     left: 0;
@@ -85,14 +85,15 @@ h1{
 
 .poke-card-body{
     font-family: 'Graduate', cursive;
-    background: #efefbb;
-    align-items: center;
+    background: black;
     border-radius: 10px;
-    height: 700px;
-    width: 1000px;
+    height: 500px;
+    width: 800px;
     margin-top: 2.0em;
     margin-bottom: 2.0em;
     display: flex;
+    align-items: center;
+    text-align: center;
 }
 .left-side{
     background-color: red;
@@ -111,6 +112,13 @@ h1{
     width: 70vw;
 }
 .card-img{
-    width: 125px;
-    height: 125px;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+}
+.num{
+    align-items: center;
+}
+.tile-card:hover{
+    cursor: pointer;
 }
