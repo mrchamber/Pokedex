@@ -68,3 +68,49 @@ h1{
     letter-spacing: 1px;
     font-size: 0.8em;
 }
+
+.poke-card{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #f4f4f4;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.poke-card-body{
+    font-family: 'Graduate', cursive;
+    background: #efefbb;
+    align-items: center;
+    border-radius: 10px;
+    height: 700px;
+    width: 1000px;
+    margin-top: 2.0em;
+    margin-bottom: 2.0em;
+    display: flex;
+}
+.left-side{
+    background-color: red;
+    align-items: center;
+    border-radius: 10px;
+    margin-left: 2em;
+    height: 50vh;
+    width: 30vw;
+}
+.right-side{
+    background-color: white;
+    align-items: center;
+    border-radius: 10px;
+    margin-right: 2em;
+    height: 50vh;
+    width: 70vw;
+}
+.card-img{
+    width: 125px;
+    height: 125px;
+}
