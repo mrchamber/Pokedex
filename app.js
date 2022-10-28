@@ -4,6 +4,33 @@ const colors = {
     generation1: "linear-gradient(145deg, " +'#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' +")",
     generation2: "linear-gradient(145deg, " +'#daa520' + ", " + '#c0c0c0' + ", " + '#4fd9ff' +")",
     generation3: "linear-gradient(145deg, " +'#a00000' + ", " + '#0000a0' + ", " + '#00a000' +")",
+    generation4: "linear-gradient(145deg, " +'#aaaaff' + ", " + '#ffaaaa' + ", " + '#999999' +")",
+    generation5: "linear-gradient(145deg, " +'#444444' + ", " + '#e1e1e1' + ")",
+    generation6: "linear-gradient(145deg, " +'#6376b8' + ", " + '#ed5540' + ")",
+    generation7: "linear-gradient(145deg, " +'#f1912b' + ", " + '#5599ca' + ")",
+    generation8: "linear-gradient(145deg, " +'#00d1f6' + ", " + '#9e2306' + ")",
+    generation9: "linear-gradient(145deg, " +'#c91421' + ", " + '#632ea6' + ")",
+}
+
+const infoColors = {
+    Normal: '#A8A77A',
+    Fire: '#EE8130',
+    Water: '#6390F0',
+    Electric: '#F7D02C',
+    Grass: '#7AC74C',
+    Ice: '#96D9D6',
+    Fighting: '#C22E28',
+    Poison: '#A33EA1',
+    Ground: '#E2BF65',
+    Flying: '#A98FF3',
+    Psychic: '#F95587',
+    Bug: '#A6B91A',
+    Rock: '#B6A136',
+    Ghost: '#735797',
+    Dragon: '#6F35FC',
+    Dark: '#705746',
+    Steel: '#B7B7CE',
+    Fairy: '#D685AD',
 }
 
 const fetchPokemon =  async () => {
@@ -28,6 +55,7 @@ const  createPokemonCard = (pokemon) => {
     const color = colors[generation]
 
     pokemonEl.style.background = color;
+
 
 
     const pokemonHTMLString = `
@@ -56,11 +84,12 @@ const selectPokemon = async (id) => {
 const displayCard = (pokeman) => {
     const htmlString = `
         <div class="poke_card" onclick="closeCard()">
-            <div class="poke-card-body">
+            <div class="poke-card-body" id="poke-card-body">
                 <div class="left-side">
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
                     <h2 class="card-name">${pokeman.name}</h2>
                     <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img">
+                    <h3 class="poke-height">${pokeman.type}</h3>
                     <h3 class="poke-height">${pokeman.height}</h3>
                     <h3 class="poke-height">${pokeman.weight}</h3>
                 </div>
@@ -104,8 +133,18 @@ const displayCard = (pokeman) => {
             </div>
         </div>
     `;
+
     poke_container.innerHTML = htmlString + poke_container.innerHTML;
-    console.log(htmlString);
+
+    const poke = document.getElementById("poke-card-body");
+
+    const poke_type = pokeman.type;
+    const color = infoColors[poke_type];
+
+    poke.style.background = color;
+
+    console.log(color)
+
 };
 
 const closeCard = () => {
