@@ -102,7 +102,7 @@ h1{
     border-radius: 1em;
     margin-left: 2em;
     margin-right: 2em;
-    height: 70vh;
+    height: 75vh;
     width: 30vw;
 }
 .right-side{
@@ -110,7 +110,7 @@ h1{
     align-items: center;
     border-radius: 10px;
     margin-right: 2em;
-    height: 70vh;
+    height: 75vh;
     width: 70vw;
     text-align: left;
 }
