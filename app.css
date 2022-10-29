@@ -88,8 +88,8 @@ h1{
     color: black;
     font-family: 'Graduate', cursive;
     border-radius: 10px;
-    height: 500px;
-    width: 800px;
+    height: 600px;
+    width: 900px;
     margin-top: 2.0em;
     margin-bottom: 2.0em;
     display: flex;
@@ -106,12 +106,13 @@ h1{
     width: 30vw;
 }
 .right-side{
-    background-color: white;
+    background-color: hsla(0,0%,100%,.25098039215686274);
     align-items: center;
-    border-radius: 1em;
+    border-radius: 10px;
     margin-right: 2em;
     height: 50vh;
     width: 70vw;
+    text-align: left;
 }
 .card-img{
     width: 200px;
@@ -123,4 +124,58 @@ h1{
 }
 .tile-card:hover{
     cursor: pointer;
+}
+.section-header{
+    font-size: 24px;
+    margin-left: 20px;
+}
+.ability-container, .bs-container, .enrty-container {
+    margin-left: 30px;
+    margin-right: 20px;
+    background: white;
+    border-radius: 10px;
+}
+
+.enrty-container{
+    width: 35em;
+    height: 80px;
+    padding: 5px;
+}
+
+.ability-container{
+    width: 35em;
+    height: 50px;
+    padding: 15px;
+}
+
+.ability-info{
+    margin: auto;
+}
+
+.bs-container{
+    width: 35em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-gap: 0 15px;
+    gap: 0 40px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 1rem;
+    height: 150px;
+}
+
+.stat-name, .stat-val{
+    text-align: center;
+}
+
+.stat-name{
+    text-transform: uppercase;
+}
+.stat-columns{
+    width: 135px;
+    margin-right: 0;
+}
+.stat-val{
+    padding-top: 5px;
 }

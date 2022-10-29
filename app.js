@@ -82,6 +82,7 @@ const selectPokemon = async (id) => {
 };
 
 const displayCard = (pokeman) => {
+    const ability = pokeman.abilities;
     const htmlString = `
         <div class="poke_card" onclick="closeCard()">
             <div class="poke-card-body" id="poke-card-body">
@@ -96,17 +97,17 @@ const displayCard = (pokeman) => {
                 <div class="right-side">
                     <h2 class="section-header">Enrty:</h2>
                     <div class="enrty-container">
-                        <p class="enrty-info"></p>
+                        <p class="enrty-info">${pokeman.entry}</p>
                     </div>
                     <h2 class="section-header">Abilities:</h2>
                     <div class="ability-container">
-                         <p class="ability-info"><${pokeman.abilities}/p>
+                         <p class="ability-info">${ability}</p>
                     </div>
                     <h2 class="section-header">Base Stats</h2>
                     <div class="bs-container">
                         <div class="stat-columns">
                             <div class="stat-name">HP</div>
-                            <divclass="stat-val">${pokeman.stats.HP}</div>
+                            <div class="stat-val">${pokeman.stats.HP}</div>
                         </div>
                         <div class="stat-columns">
                             <div class="stat-name">Attack</div>
@@ -117,11 +118,11 @@ const displayCard = (pokeman) => {
                             <div class="stat-val">${pokeman.stats.Defense}</div>
                         </div>
                         <div class="stat-columns">
-                            <div class="stat-name">Special Attack</div>
+                            <div class="stat-name">Sp. Attack</div>
                             <div class="stat-val">${pokeman.stats.SpAtk}</div>
                         </div>
                         <div class="stat-columns">
-                            <div class="stat-name">Special Defense</div>
+                            <div class="stat-name">Sp. Defense</div>
                             <div class="stat-val">${pokeman.stats.SpDef}</div>
                         </div>
                         <div class="stat-columns">
@@ -136,14 +137,14 @@ const displayCard = (pokeman) => {
 
     poke_container.innerHTML = htmlString + poke_container.innerHTML;
 
+    console.log(ability)
+
     const poke = document.getElementById("poke-card-body");
 
     const poke_type = pokeman.type;
     const color = infoColors[poke_type];
 
     poke.style.background = color;
-
-    console.log(color)
 
 };
 
