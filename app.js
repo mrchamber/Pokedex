@@ -137,8 +137,6 @@ const displayCard = (pokeman) => {
 
     poke_container.innerHTML = htmlString + poke_container.innerHTML;
 
-    console.log(ability)
-
     const poke = document.getElementById("poke-card-body");
 
     const poke_type = pokeman.type;
