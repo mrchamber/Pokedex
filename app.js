@@ -90,7 +90,7 @@ const displayCard = (pokeman) => {
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
                     <h2 class="card-name">${pokeman.name}</h2>
                     <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img">
-                    <h3 class="poke-height">${pokeman.type.T1}</h3>
+                    <h3 class="poke-height">${pokeman.type}</h3>
                     <h3 class="poke-height">${pokeman.height}</h3>
                     <h3 class="poke-height">${pokeman.weight}</h3>
                 </div>
