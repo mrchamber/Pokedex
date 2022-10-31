@@ -83,6 +83,8 @@ const selectPokemon = async (id) => {
 
 const displayCard = (pokeman) => {
     const ability = pokeman.abilities;
+    const type = Object.values(pokeman.type).map((type) => type).join('/');
+    console.log(type);
     const htmlString = `
         <div class="poke_card" onclick="closeCard()">
             <div class="poke-card-body" id="poke-card-body">
@@ -90,7 +92,7 @@ const displayCard = (pokeman) => {
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
                     <h2 class="card-name">${pokeman.name}</h2>
                     <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img">
-                    <h3 class="poke-height">${pokeman.type}</h3>
+                    <h3 class="poke-height">${type}</h3>
                     <h3 class="poke-height">${pokeman.height}</h3>
                     <h3 class="poke-height">${pokeman.weight}</h3>
                 </div>
@@ -139,11 +141,21 @@ const displayCard = (pokeman) => {
 
     const poke = document.getElementById("poke-card-body");
 
-    const poke_type = pokeman.type;
+    const poke_type = pokeman.type.T1;
+    const poke_type2 = pokeman.type.T2;
+
+
     const color = infoColors[poke_type];
+    const color2 = infoColors[poke_type2];
 
 
+    if(Object.keys(pokeman.type).length === 2){
+        poke.style.background = "linear-gradient(145deg, " + color + ", " + color2 + ")";
+    }
+
+    if (Object.keys(pokeman.type).length === 1) {
         poke.style.background = color;
+    }
 
 };
 
