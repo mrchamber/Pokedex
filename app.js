@@ -1,5 +1,5 @@
 const poke_container = document.getElementById("poke-container");
-const pokemon_count = 201;
+const pokemon_count = 386;
 const colors = {
     generation1: "linear-gradient(145deg, " +'#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' +")",
     generation2: "linear-gradient(145deg, " +'#daa520' + ", " + '#c0c0c0' + ", " + '#4fd9ff' +")",
@@ -90,7 +90,7 @@ const displayCard = (pokeman) => {
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
                     <h2 class="card-name">${pokeman.name}</h2>
                     <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img">
-                    <h3 class="poke-height">${pokeman.type}</h3>
+                    <h3 class="poke-height">${pokeman.type.T1}</h3>
                     <h3 class="poke-height">${pokeman.height}</h3>
                     <h3 class="poke-height">${pokeman.weight}</h3>
                 </div>
@@ -142,7 +142,8 @@ const displayCard = (pokeman) => {
     const poke_type = pokeman.type;
     const color = infoColors[poke_type];
 
-    poke.style.background = color;
+
+        poke.style.background = color;
 
 };
 
