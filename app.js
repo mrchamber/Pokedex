@@ -13,24 +13,24 @@ const colors = {
 }
 
 const infoColors = {
-  Grass: '#5FBD58';
-  Bug: '#92BC2C';
-  Dark: '#595761';
-  Dragon: '#0C69C8';
-  Electric: '#F2D94E';
-  Fairy: '#EE90E6';
-  Fighting: '#D3425F';
-  Fire: '#dc872f';
-  Flying: '#A1BBEC';
-  Ghost: '#5F6DBC';
-  Ground: '#DA7C4D';
-  Ice: '#75D0C1';
-  Normal: '#A0A29F';
-  Poison: '#B763CF';
-  Psychic: '#ff2ca8';
-  Rock: '#a38c21';
-  Steel: '#5695A3';
-  Water: '#539DDF';
+  Grass: '#5FBD58',
+  Bug: '#92BC2C',
+  Dark: '#595761',
+  Dragon: '#0C69C8',
+  Electric: '#F2D94E',
+  Fairy: '#EE90E6',
+  Fighting: '#D3425F',
+  Fire: '#dc872f',
+  Flying: '#A1BBEC',
+  Ghost: '#5F6DBC',
+  Ground: '#DA7C4D',
+  Ice: '#75D0C1',
+  Normal: '#A0A29F',
+  Poison: '#B763CF',
+  Psychic: '#ff2ca8',
+  Rock: '#a38c21',
+  Steel: '#5695A3',
+  Water: '#539DDF',
 }
 
 const fetchPokemon =  async () => {
