@@ -184,6 +184,7 @@ h1{
 
 .stat-name, .stat-val{
     text-align: center;
+    padding-left: 30px;
 }
 
 .stat-name{
