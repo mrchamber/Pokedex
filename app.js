@@ -151,7 +151,7 @@ const displayCard = (pokeman) => {
 
 
     if(Object.keys(pokeman.type).length === 2){
-        poke.style.background = "linear-gradient(145deg, " + color + ", " + '#353935' + ", " + color2 +")"
+        poke.style.background = "linear-gradient(145deg, " + color + ", " + '#FFFFFF' + ", " + color2 +")"
     }
 
     if (Object.keys(pokeman.type).length === 1) {
