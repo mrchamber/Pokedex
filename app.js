@@ -13,24 +13,24 @@ const colors = {
 }
 
 const infoColors = {
-  Grass: '#5FBD58',
-  Bug: '#92BC2C',
-  Dark: '#595761',
-  Dragon: '#0C69C8',
-  Electric: '#F2D94E',
-  Fairy: '#EE90E6',
-  Fighting: '#D3425F',
-  Fire: '#dc872f',
-  Flying: '#A1BBEC',
-  Ghost: '#5F6DBC',
-  Ground: '#DA7C4D',
-  Ice: '#75D0C1',
-  Normal: '#A0A29F',
-  Poison: '#B763CF',
-  Psychic: '#ff2ca8',
-  Rock: '#a38c21',
-  Steel: '#5695A3',
-  Water: '#539DDF',
+  Bug: '#A6B91A',
+  Dark: '#705746',
+  Dragon: '#6F35FC',
+  Electric: '#F7D02C',
+  Fairy: '#D685AD',
+  Fighting: '#C22E28',
+  Fire: '#EE8130',
+  Flying: '#A98FF3',
+  Ghost: '#735797',
+  Grass: '#7AC74C',
+  Ground: '#E2BF65',
+  Ice: '#96D9D6',
+  Normal: '#A8A77A',
+  Poison: '#A33EA1',
+  Psychic: '#F95587',
+  Rock: '#B6A136',
+  Steel: '#B7B7CE',
+  Water: '#6390F0',
 }
 
 const fetchPokemon =  async () => {
@@ -151,7 +151,7 @@ const displayCard = (pokeman) => {
 
 
     if(Object.keys(pokeman.type).length === 2){
-        poke.style.background = "linear-gradient(145deg, " + color + ", " + color2 + ")";
+        poke.style.background = "linear-gradient(145deg, " + color + ", " + ", '#000000' , " + color2 + ")";
     }
 
     if (Object.keys(pokeman.type).length === 1) {
