@@ -104,16 +104,16 @@ h1{
     border-radius: 1em;
     margin-left: 2em;
     margin-right: 2em;
-    height: 35em;
-    width: 20em;
+    height: 47.5em;
+    width: 32.5em;
 }
 .right-side{
     background-color: hsla(0,0%,100%,.25098039215686274);
     align-items: center;
     border-radius: 10px;
     margin-right: 2em;
-    height: 35em;
-    width: 50em;
+    height: 47.5em;
+    width: 62.5em;
     text-align: left;
 }
 .card-name{
