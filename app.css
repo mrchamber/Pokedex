@@ -173,6 +173,26 @@ h1{
     align-items: center;
     padding-bottom: 20px;
 }
+
+.card-img:hover{
+    animation: bounce .5s linear;
+}
+
+@keyframes bounce {
+    20%{
+        transform: translateX(-8px);
+    }
+    40%{
+        transform: translateX(2px);
+    }
+    60%{
+        transform: translateX(-4px);
+    }
+    80%{
+        transform: translateX(-2px);
+    }
+}
+
 .num{
     align-items: center;
     padding-top: 20px;
