@@ -84,7 +84,6 @@ const selectPokemon = async (id) => {
 const displayCard = (pokeman) => {
     const ability = pokeman.abilities;
     const type = Object.values(pokeman.type).map((type) => type).join('/');
-    console.log(type);
     const htmlString = `
         <div class="poke_card" onclick="closeCard()">
             <div class="poke-card-body" id="poke-card-body">
@@ -138,7 +137,12 @@ const displayCard = (pokeman) => {
         </div>
     `;
 
+    const cry = new Audio(pokeman.cry)
+    cry.play();
+
     poke_container.innerHTML = htmlString + poke_container.innerHTML;
+
+
 
     const poke = document.getElementById("poke-card-body");
 

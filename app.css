@@ -60,7 +60,7 @@ h1{
     }
 }
 
-img:hover{
+.img-container:hover{
     animation: bounce 0.5s linear;
 }
 
