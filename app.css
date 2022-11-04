@@ -45,25 +45,6 @@ h1{
     transform: scale(1.1);
 }
 
-@keyframes bounce {
-    20%{
-        transform: translateX(-6px);
-    }
-    40%{
-        transform: translateX(0px);
-    }
-    60%{
-        transform: translateX(-2px);
-    }
-    80%{
-        transform: translateX(-0px);
-    }
-}
-
-.img-container:hover{
-    animation: bounce 0.5s linear;
-}
-
 .pokemon .img-container{
     background-color: rgba(255,225,225, 0.6);
     border-radius: 50%;
@@ -180,16 +161,16 @@ h1{
 
 @keyframes bounce {
     20%{
-        transform: translateX(-8px);
+        transform: translateX(-10px);
     }
     40%{
-        transform: translateX(2px);
+        transform: translateX(4px);
     }
     60%{
-        transform: translateX(-4px);
+        transform: translateX(-6px);
     }
     80%{
-        transform: translateX(-2px);
+        transform: translateX(-4px);
     }
 }
 
