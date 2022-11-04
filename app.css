@@ -39,7 +39,6 @@ h1{
 }
 
 .pokemon:hover{
-    animation: bounce 0.5s linear;
     outline: none;
     border-color: black;
     box-shadow: 0 0 15px black;
@@ -59,6 +58,10 @@ h1{
     80%{
         transform: translateX(-0px);
     }
+}
+
+img:hover{
+    animation: bounce 0.5s linear;
 }
 
 .pokemon .img-container{
