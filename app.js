@@ -91,7 +91,7 @@ const displayCard = (pokeman) => {
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
                     <h2 class="card-name">${pokeman.name}</h2>
                     <h2 class="card-title"><em>The ${pokeman.category} Pokemon</em></h2>
-                    <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img" id="cardimg">
+                    <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img" id="cardimg" onclick="play()">
                     <audio id="audio" src="https://pokeimage-production.up.railway.app/pokeCry/${pokeman.id}.mp3"></audio>
                     <h3 class="poke-height">${type}</h3>
                     <h3 class="poke-height">${pokeman.height}</h3>
@@ -146,6 +146,7 @@ const displayCard = (pokeman) => {
 
     function play(){
         cry.play();
+        cry.volume = .5;
     }
 
     pokeCry.addEventListener('mouseover', play)
@@ -178,4 +179,14 @@ const closeCard = () => {
 }
 
 fetchPokemon();
+
+function music(){
+
+    const bgMusic = document.getElementById("music");
+
+    bgMusic.volume = 0;
+    bgMusic.play();
+
+}
+
 
