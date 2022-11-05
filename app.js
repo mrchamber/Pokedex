@@ -178,15 +178,9 @@ const closeCard = () => {
     card.parentElement.removeChild(card)
 }
 
+
 fetchPokemon();
 
-function music(){
 
-    const bgMusic = document.getElementById("music");
-
-    bgMusic.volume = 0;
-    bgMusic.play();
-
-}
 
 

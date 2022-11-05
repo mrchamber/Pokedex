@@ -7,9 +7,13 @@
 </head>
 <body>
 <h1>Pokedex</h1>
-<audio controls loop="loop" autoplay>
-    <source id="music" src="https://pokeimage-production.up.railway.app/Route%2030.mp3">
-</audio>
+<script>
+    const audio = new Audio("https://pokeimage-production.up.railway.app/purrple-cat-field-of-fireflies.mp3")
+    audio.play();
+    audio.volume = .3;
+    audio.loop = true;
+    console.log(audio.volume)
+</script>
 <div class="poke-container" id="poke-container"></div>
 <script src="app.js"></script>
 </body>
