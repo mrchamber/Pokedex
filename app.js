@@ -57,11 +57,10 @@ const  createPokemonCard = (pokemon) => {
     pokemonEl.style.background = color;
 
 
-
     const pokemonHTMLString = `
-     <div class="tile-card" onclick="selectPokemon(${pokemon.id})">
+     <div id="tilecard" class="tile-card" onclick="selectPokemon(${pokemon.id})">
         <div class="img-container">
-                <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokemon.id}.png">
+                <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemon.id}.png">
             </div>
             <div class="info">
                 <span class="number">#${id}</span>
@@ -72,6 +71,7 @@ const  createPokemonCard = (pokemon) => {
     pokemonEl.innerHTML = pokemonHTMLString;
 
     poke_container.appendChild(pokemonEl)
+
 };
 
 const selectPokemon = async (id) => {
@@ -84,7 +84,6 @@ const selectPokemon = async (id) => {
 const displayCard = (pokeman) => {
     const ability = pokeman.abilities;
     const type = Object.values(pokeman.type).map((type) => type).join('/');
-    console.log(type);
     const htmlString = `
         <div class="poke_card" onclick="closeCard()">
             <div class="poke-card-body" id="poke-card-body">
@@ -92,7 +91,8 @@ const displayCard = (pokeman) => {
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
                     <h2 class="card-name">${pokeman.name}</h2>
                     <h2 class="card-title"><em>The ${pokeman.category} Pokemon</em></h2>
-                    <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img">
+                    <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img" id="cardimg" onclick="play()">
+                    <audio id="audio" src="https://pokeimage-production.up.railway.app/pokeCry/${pokeman.id}.mp3"></audio>
                     <h3 class="poke-height">${type}</h3>
                     <h3 class="poke-height">${pokeman.height}</h3>
                     <h3 class="poke-height">${pokeman.weight}</h3>
@@ -138,7 +138,20 @@ const displayCard = (pokeman) => {
         </div>
     `;
 
+
     poke_container.innerHTML = htmlString + poke_container.innerHTML;
+
+    const cry = document.getElementById("audio")
+    const pokeCry = document.getElementById("cardimg")
+
+    function play(){
+        cry.play();
+        cry.volume = .5;
+    }
+
+    pokeCry.addEventListener('mouseover', play)
+    pokeCry.addEventListener('mouseout', stop)
+
 
     const poke = document.getElementById("poke-card-body");
 
@@ -165,5 +178,9 @@ const closeCard = () => {
     card.parentElement.removeChild(card)
 }
 
+
 fetchPokemon();
+
+
+
 

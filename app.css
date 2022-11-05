@@ -39,26 +39,10 @@ h1{
 }
 
 .pokemon:hover{
-    animation: bounce 0.5s linear;
     outline: none;
     border-color: black;
     box-shadow: 0 0 15px black;
     transform: scale(1.1);
-}
-
-@keyframes bounce {
-    20%{
-        transform: translateX(-6px);
-    }
-    40%{
-        transform: translateX(0px);
-    }
-    60%{
-        transform: translateX(-2px);
-    }
-    80%{
-        transform: translateX(-0px);
-    }
 }
 
 .pokemon .img-container{
@@ -170,6 +154,26 @@ h1{
     align-items: center;
     padding-bottom: 20px;
 }
+
+.card-img:hover{
+    animation: bounce .5s linear;
+}
+
+@keyframes bounce {
+    20%{
+        transform: translateX(-10px);
+    }
+    40%{
+        transform: translateX(4px);
+    }
+    60%{
+        transform: translateX(-6px);
+    }
+    80%{
+        transform: translateX(-4px);
+    }
+}
+
 .num{
     align-items: center;
     padding-top: 20px;
