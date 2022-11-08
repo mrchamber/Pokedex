@@ -165,7 +165,7 @@ h1{
     }
     40%{
         transform: translateX(4px);
-    }
+    } 
     60%{
         transform: translateX(-6px);
     }
