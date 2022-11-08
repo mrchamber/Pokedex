@@ -1,4 +1,5 @@
 const poke_container = document.getElementById("poke-container");
+const pokeCache = {};
 const pokemon_count = 905;
 const colors = {
     generation1: "linear-gradient(145deg, " +'#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' +")",
@@ -89,10 +90,15 @@ const  createPokemonCard = (pokemon) => {
 };
 
 const selectPokemon = async (id) => {
-    const url = `https://updated-pokemon-apis-production.up.railway.app/pokemon/${id}`;
-    const res = await fetch(url);
-    const pokeman = await res.json();
-    displayCard(pokeman);
+    if (!pokeCache[id]){
+        const url = `https://updated-pokemon-apis-production.up.railway.app/pokemon/${id}`;
+        const res = await fetch(url);
+        const pokeman = await res.json();
+        pokeCache[id] = pokeman;
+        console.log(pokeCache[id])
+        displayCard(pokeman);
+    }
+    displayCard(pokeCache[id]);
 };
 
 const displayCard = (pokeman) => {
