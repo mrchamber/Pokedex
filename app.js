@@ -33,17 +33,31 @@ const infoColors = {
   Water: '#6390F0',
 }
 
-const fetchPokemon =  async () => {
-    for (let i = 1; i <= pokemon_count; i++) {
-        await getPokemon(i);
-    }
+const changeRegion = () =>{
+    const selectRegion = document.getElementById("region");
+    const selectedValue = selectRegion.options[selectRegion.selectedIndex].value;
+    console.log(selectedValue);
 }
+
+
+
+
 const getPokemon = async (id) =>{
     const url = `https://updated-pokemon-apis-production.up.railway.app/pokemon/${id}`;
     const res = await fetch(url)
     const data = await res.json()
     createPokemonCard(data);
 }
+
+
+const fetchPokemon =  async () => {
+    for (let i = 1; i <= pokemon_count; i++) {
+        await getPokemon(i);
+    }
+}
+
+fetchPokemon();
+
 
 const  createPokemonCard = (pokemon) => {
     const pokemonEl = document.createElement('div');
@@ -84,6 +98,7 @@ const selectPokemon = async (id) => {
 const displayCard = (pokeman) => {
     const ability = pokeman.abilities;
     const type = Object.values(pokeman.type).map((type) => type).join('/');
+
     const htmlString = `
         <div class="poke_card" onclick="closeCard()">
             <div class="poke-card-body" id="poke-card-body">
@@ -98,7 +113,7 @@ const displayCard = (pokeman) => {
                     <h3 class="poke-height">${pokeman.weight}</h3>
                 </div>
                 <div class="right-side">
-                    <h2 class="section-header">Enrty:</h2>
+                    <h2 class="section-header">Entry:</h2>
                     <div class="enrty-container">
                         <p class="enrty-info">${pokeman.entry}</p>
                     </div>
@@ -132,6 +147,9 @@ const displayCard = (pokeman) => {
                             <div class="stat-name">Speed</div>
                             <div class="stat-val">${pokeman.stats.Speed}</div>
                         </div>
+                    </div>
+                    <div id="evoInfo">
+                        <div id="evoIn"></div>
                     </div>
                 </div>
             </div>
@@ -177,9 +195,6 @@ const closeCard = () => {
     const card = document.querySelector('.poke_card');
     card.parentElement.removeChild(card)
 }
-
-
-fetchPokemon();
 
 
 

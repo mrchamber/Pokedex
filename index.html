@@ -11,13 +11,20 @@
 </head>
 <body>
 <h1>Pokedex</h1>
-<audio src="https://pokeimage-production.up.railway.app/purrple-cat-field-of-fireflies.mp3" autoplay id="music"></audio>
-<script>
-    const audio = document.getElementById("music");
-    audio.play();
-    audio.volume = .2;
-    audio.loop = true;
-</script>
+<div class="select-container" id="select-container">
+    <label for="region"></label>
+    <select name="region" id="region" onchange="changeRegion(value)">
+        <option value="Kanto">Kanto</option>
+        <option value="Johto">Johto</option>
+        <option value="Hoenn">Hoenn</option>
+        <option value="Sinnoh">Sinnoh</option>
+        <option value="Unova">Unova</option>
+        <option value="Kalos">Kalos</option>
+        <option value="Alola">Alola</option>
+        <option value="Galar">Galar</option>
+    </select>
+</div>
+<div class="search-container" id="search-container"></div>
 <div class="poke-container" id="poke-container"></div>
 <script src="app.js"></script>
 </body>
