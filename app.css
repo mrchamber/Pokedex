@@ -19,6 +19,25 @@ h1{
     letter-spacing: 3px;
 }
 
+select{
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    box-sizing: border-box;
+    align-items: center;
+    border-width: 1px;
+    border-style: solid;
+    width: 10vw;
+    margin-top: 5px;
+
+}
+
 .poke-container{
     display: flex;
     flex-wrap: wrap;

@@ -1,6 +1,9 @@
 const poke_container = document.getElementById("poke-container");
 const pokeCache = {};
-const pokemon_count = 905;
+let pokemon_count = 905;
+
+//look by query, do gens since data is avilable, put info in new array (use .map or .filter)
+
 const colors = {
     generation1: "linear-gradient(145deg, " +'#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' +")",
     generation2: "linear-gradient(145deg, " +'#daa520' + ", " + '#c0c0c0' + ", " + '#4fd9ff' +")",
@@ -34,15 +37,6 @@ const infoColors = {
     Water: '#6390F0',
 }
 
-const changeRegion = () =>{
-    const selectRegion = document.getElementById("region");
-    const selectedValue = selectRegion.options[selectRegion.selectedIndex].value;
-    console.log(selectedValue);
-}
-
-
-
-
 const getPokemon = async (id) =>{
     const url = `https://updated-pokemon-apis-production.up.railway.app/pokemon/${id}`;
     const res = await fetch(url)
@@ -55,21 +49,23 @@ const fetchPokemon =  async () => {
     for (let i = 1; i <= pokemon_count; i++) {
         await getPokemon(i);
     }
-}
 
-fetchPokemon();
+}
 
 
 const  createPokemonCard = (pokemon) => {
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon')
 
+
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     const id = pokemon.id.toString().padStart(3,'0')
-    const generation = pokemon.generation.name
+    const generation = pokemon.generation
     const color = colors[generation]
 
     pokemonEl.style.background = color;
+
+    //console.log(Object.values(pokemon).filter(gen => pokemon.generation === document.getElementById("region")));
 
 
     const pokemonHTMLString = `
@@ -85,17 +81,18 @@ const  createPokemonCard = (pokemon) => {
             `
     pokemonEl.innerHTML = pokemonHTMLString;
 
+
     poke_container.appendChild(pokemonEl)
 
 };
 
 const selectPokemon = async (id) => {
+
     if (!pokeCache[id]){
         const url = `https://updated-pokemon-apis-production.up.railway.app/pokemon/${id}`;
         const res = await fetch(url);
         const pokeman = await res.json();
         pokeCache[id] = pokeman;
-        console.log(pokeCache[id])
         displayCard(pokeman);
     }
     else{
@@ -115,7 +112,7 @@ const displayCard = (pokeman) => {
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
                     <h2 class="card-name">${pokeman.name}</h2>
                     <h2 class="card-title"><em>The ${pokeman.category} Pokemon</em></h2>
-                    <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img" id="cardimg" onclick="play()">
+                    <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img" id="card-img" onclick="play()">
                     <audio id="audio" src="https://pokeimage-production.up.railway.app/pokeCry/${pokeman.id}.mp3"></audio>
                     <h3 class="poke-height">${type}</h3>
                     <h3 class="poke-height">${pokeman.height}</h3>
@@ -169,9 +166,9 @@ const displayCard = (pokeman) => {
     poke_container.innerHTML = htmlString + poke_container.innerHTML;
 
     const cry = document.getElementById("audio")
-    const pokeCry = document.getElementById("cardimg")
+    const pokeCry = document.getElementById("card-img")
 
-    function play(){
+    function play() {
         cry.play();
         cry.volume = .5;
     }
@@ -204,3 +201,5 @@ const closeCard = () => {
     const card = document.querySelector('.poke_card');
     card.parentElement.removeChild(card)
 }
+
+fetchPokemon();
