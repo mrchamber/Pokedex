@@ -1,14 +1,19 @@
 const poke_container = document.getElementById("poke-container");
 const SearchContainer = document.getElementById("search-container");
 
+const p = document.getElementById('select-option');
+
 const SearchElement = document.createElement("input");
 SearchElement.setAttribute("type", "text");
 SearchElement.setAttribute("name", "searchBar");
 SearchElement.setAttribute("placeholder", "Search...");
 SearchContainer.appendChild(SearchElement);
 
+const RegionElement =document.getElementById("custom-select")
+
 const pokeCache = {};
 let pokemon_count = 905;
+let i = 1;
 
 //look by query, do gens since data is avilable, put info in new array (use .map or .filter)
 
@@ -54,21 +59,29 @@ const getPokemon = async (id) =>{
 
 
 const fetchPokemon =  async () => {
-    for (let i = 1; i <= pokemon_count; i++) {
+    for (i = 1; i <= pokemon_count; i++) {
         await getPokemon(i);
     }
     createSearchFilter();
 }
 
-const  createPokemonCard = (pokemon) => {
+const  createPokemonCard = (pokemon, dropdownValue) => {
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon')
 
 
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
+    const generation = pokemon.generation
+    const type = Object.values(pokemon.type);
+
+    console.log(type)
     pokemonEl.setAttribute("id", name);
     const id = pokemon.id.toString().padStart(3,'0')
-    const generation = pokemon.generation
+
+    //const filteredPokemonsByType = Object.values(pokemon).filter(gen => type === "Fire");
+    //console.log('Filtered by eletric', filteredPokemonsByType);
+
+
     const color = colors[generation]
 
     pokemonEl.style.background = color;
@@ -85,6 +98,9 @@ const  createPokemonCard = (pokemon) => {
             </div>
      </div>
             `
+
+
+
     pokemonEl.setAttribute("class", "pokemon");
     pokemonEl.innerHTML = pokemonHTMLString;
 
@@ -94,6 +110,7 @@ const  createPokemonCard = (pokemon) => {
     createSearchFilter(name);
 
 };
+
 
 const selectPokemon = async (id) => {
 
@@ -227,3 +244,4 @@ const createSearchFilter = (pokemonData) => {
         });
     });
 };
+
