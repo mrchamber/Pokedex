@@ -9,10 +9,10 @@ SearchElement.setAttribute("placeholder", "Search...");
 SearchContainer.appendChild(SearchElement);
 
 const RegionElement = document.getElementById("select-option");
+const SortElement = document.getElementById("sort");
 
 const value = RegionElement.value;
 
-console.log(value);
 
 const pokeCache = {};
 let pokemon_count = 151;
@@ -76,7 +76,7 @@ function clearBox(element){
     document.getElementById("poke-container").innerHTML = "";
 }
 
-RegionElement.addEventListener('change', function handleChange (event){
+RegionElement.addEventListener('change', function handleChangeRegion (event){
     if (event.target.value === 'Kanto'){
         pokemon_count = 151;
         i = 1;
@@ -158,7 +158,7 @@ const  createPokemonCard = (pokemon) => {
     const generation = pokemon.generation
     const type = Object.values(pokemon.type);
 
-    console.log(type)
+    //console.log(type)
     pokemonEl.setAttribute("id", name);
     const id = pokemon.id.toString().padStart(3,'0')
 
@@ -169,6 +169,7 @@ const  createPokemonCard = (pokemon) => {
     const color = colors[generation]
 
     pokemonEl.style.background = color;
+
 
 
     const pokemonHTMLString = `
@@ -192,6 +193,7 @@ const  createPokemonCard = (pokemon) => {
     poke_container.appendChild(pokemonEl)
 
     createSearchFilter(name);
+
 
 };
 
@@ -328,4 +330,5 @@ const createSearchFilter = (pokemonData) => {
         });
     });
 };
+
 
