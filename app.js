@@ -53,56 +53,80 @@ const infoColors = {
     Water: '#6390F0',
 }
 
+function onReady(callback) {
+    const intervalId = window.setInterval(function () {
+        if (document.getElementsByTagName('body')[0] !== undefined) {
+            window.clearInterval(intervalId);
+            callback.call(this);
+        }
+    }, 10000);
+}
+
+function setVisible(selector, visible) {
+    document.querySelector(selector).style.display = visible ? 'block' : 'none';
+}
+
+onReady(function (){
+    setVisible('.page', true);
+    setVisible('#loading', false)
+})
+
 function clearBox(element){
     document.getElementById("poke-container").innerHTML = "";
 }
 
 RegionElement.addEventListener('change', function handleChange (event){
-    if (event.target.value === 'generation1'){
+    if (event.target.value === 'Kanto'){
         pokemon_count = 151;
         i = 1;
         clearBox();
         fetchPokemon();
     }
-    if (event.target.value === 'generation2'){
+    if (event.target.value === 'Johto'){
         pokemon_count = 251;
         i = 152;
         clearBox();
         fetchPokemon();
     }
-    if (event.target.value === 'generation3'){
+    if (event.target.value === 'Hoenn'){
         pokemon_count = 386;
         i = 252;
         clearBox();
         fetchPokemon();
     }
-    if (event.target.value === 'generation4'){
+    if (event.target.value === 'Sinnoh'){
         pokemon_count = 494;
         i = 387;
         clearBox();
         fetchPokemon();
     }
-    if (event.target.value === 'generation5'){
+    if (event.target.value === 'Unova'){
         pokemon_count = 649;
         i = 495;
         clearBox();
         fetchPokemon();
     }
-    if (event.target.value === 'generation6'){
+    if (event.target.value === 'Kalos'){
         pokemon_count = 721;
         i = 650;
         clearBox();
         fetchPokemon();
     }
-    if (event.target.value === 'generation7'){
+    if (event.target.value === 'Alola'){
         pokemon_count = 809;
         i = 722;
         clearBox();
         fetchPokemon();
     }
-    if (event.target.value === 'generation8'){
+    if (event.target.value === 'Galar'){
         pokemon_count = 898;
         i = 810;
+        clearBox();
+        fetchPokemon();
+    }
+    if (event.target.value === 'Hisui'){
+        pokemon_count = 905;
+        i = 899;
         clearBox();
         fetchPokemon();
     }

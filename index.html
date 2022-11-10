@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="20x20" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 </head>
-<body>
+<body id="body">
 <div class="titleCon">
     <img src="PokemonDex.png" class="title">
 </div>
@@ -17,14 +17,15 @@
     <div class="filter_items">
         <label>REGION</label>
         <select id="select-option">
-            <option value="generation1">Kanto</option>
-            <option value="generation2">Johto</option>
-            <option value="generation3">Hoenn</option>
-            <option value="generation4">Sinnoh</option>
-            <option value="generation5">Unova</option>
-            <option value="generation6">Kalos</option>
-            <option value="generation7">Alola</option>
-            <option value="generation8">Galar</option>
+            <option value="Kanto">Kanto</option>
+            <option value="Johto">Johto</option>
+            <option value="Hoenn">Hoenn</option>
+            <option value="Sinnoh">Sinnoh</option>
+            <option value="Unova">Unova</option>
+            <option value="Kalos">Kalos</option>
+            <option value="Alola">Alola</option>
+            <option value="Galar">Galar</option>
+            <option value="Hisui">Hisui</option>
         </select>
     </div>
     <div class="filter_items">
@@ -63,9 +64,11 @@
         <div class="search__container" id="search-container"></div>
     </div>
 </div>
-
+<div class="page">
 <div class="poke-container" id="poke-container"></div>
 <script src="app.js"></script>
+</div>
+<div id="loading"><h2 id="load_title">Loading</h2></div>
 </body>
 <footer>
 
