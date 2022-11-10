@@ -124,6 +124,10 @@ option{
     overflow: hidden;
 }
 
+#body::-webkit-scrollbar{
+    display: none;
+}
+
 .pokemon{
     background: linear-gradient(white,white);
     border-radius: 10px;
