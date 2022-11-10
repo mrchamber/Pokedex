@@ -15,8 +15,7 @@
 }
 
 body{
-    background: #1b1b1e;
-    background: linear-gradient(to right, #d4d3dd,#efefbb);
+    background: linear-gradient(to right,#E5DACE,#746F72);
     font-family: 'Press Start 2P', cursive;
     display: flex;
     flex-direction: column;
