@@ -1,7 +1,6 @@
 const poke_container = document.getElementById("poke-container");
 const SearchContainer = document.getElementById("search-container");
 
-const p = document.getElementById('select-option');
 
 const SearchElement = document.createElement("input");
 SearchElement.setAttribute("type", "text");
@@ -9,10 +8,14 @@ SearchElement.setAttribute("name", "searchBar");
 SearchElement.setAttribute("placeholder", "Search...");
 SearchContainer.appendChild(SearchElement);
 
-const RegionElement =document.getElementById("custom-select")
+const RegionElement = document.getElementById("select-option");
+
+const value = RegionElement.value;
+
+console.log(value);
 
 const pokeCache = {};
-let pokemon_count = 905;
+let pokemon_count = 151;
 let i = 1;
 
 //look by query, do gens since data is avilable, put info in new array (use .map or .filter)
@@ -50,6 +53,62 @@ const infoColors = {
     Water: '#6390F0',
 }
 
+function clearBox(element){
+    document.getElementById("poke-container").innerHTML = "";
+}
+
+RegionElement.addEventListener('change', function handleChange (event){
+    if (event.target.value === 'generation1'){
+        pokemon_count = 151;
+        i = 1;
+        clearBox();
+        fetchPokemon();
+    }
+    if (event.target.value === 'generation2'){
+        pokemon_count = 251;
+        i = 152;
+        clearBox();
+        fetchPokemon();
+    }
+    if (event.target.value === 'generation3'){
+        pokemon_count = 386;
+        i = 252;
+        clearBox();
+        fetchPokemon();
+    }
+    if (event.target.value === 'generation4'){
+        pokemon_count = 494;
+        i = 387;
+        clearBox();
+        fetchPokemon();
+    }
+    if (event.target.value === 'generation5'){
+        pokemon_count = 649;
+        i = 495;
+        clearBox();
+        fetchPokemon();
+    }
+    if (event.target.value === 'generation6'){
+        pokemon_count = 721;
+        i = 650;
+        clearBox();
+        fetchPokemon();
+    }
+    if (event.target.value === 'generation7'){
+        pokemon_count = 809;
+        i = 722;
+        clearBox();
+        fetchPokemon();
+    }
+    if (event.target.value === 'generation8'){
+        pokemon_count = 898;
+        i = 810;
+        clearBox();
+        fetchPokemon();
+    }
+})
+
+
 const getPokemon = async (id) =>{
     const url = `https://updated-pokemon-apis-production.up.railway.app/pokemon/${id}`;
     const res = await fetch(url)
@@ -59,13 +118,13 @@ const getPokemon = async (id) =>{
 
 
 const fetchPokemon =  async () => {
-    for (i = 1; i <= pokemon_count; i++) {
+    for (i ; i <= pokemon_count; i++) {
         await getPokemon(i);
     }
     createSearchFilter();
 }
 
-const  createPokemonCard = (pokemon, dropdownValue) => {
+const  createPokemonCard = (pokemon) => {
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon')
 
