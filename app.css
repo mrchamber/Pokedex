@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
+.titleCon{
+    margin-top: 50px;
+    align-items: center;
+}
+
+.title{
+    height: 80px;
+    width: 400px;
+}
+
 body{
     background: #1b1b1e;
     background: linear-gradient(to right, #d4d3dd,#efefbb);

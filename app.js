@@ -1,5 +1,5 @@
 const poke_container = document.getElementById("poke-container");
-const SearchContainer = document.getElementById("search__containerID");
+const SearchContainer = document.getElementById("search-container");
 
 const SearchElement = document.createElement("input");
 SearchElement.setAttribute("type", "text");
