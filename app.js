@@ -29,6 +29,7 @@ const colors = {
     generation6: "linear-gradient(145deg, " +'#6376b8' + ", " + '#ed5540' + ")",
     generation7: "linear-gradient(145deg, " +'#f1912b' + ", " + '#5599ca' + ")",
     generation8: "linear-gradient(145deg, " +'#00d1f6' + ", " + '#9e2306' + ")",
+    generation85: "linear-gradient(145deg, " +'#fad709' + ", " + '#f1f4f4' + ", " + '#5e6365' +")",
     generation9: "linear-gradient(145deg, " +'#c91421' + ", " + '#632ea6' + ")",
 }
 
