@@ -15,8 +15,43 @@ body{
     margin: 0;
 }
 
+div{
+    display: block;
+}
+
 h1{
     letter-spacing: 3px;
+}
+
+.filter_container{
+    display: flex;
+    flex-direction: row;
+    margin: 7vh 0 5vh;
+    grid-gap: 0 2vw;
+    gap: 0 2vw;
+}
+
+.filter_items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Graduate', cursive;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.filter_items>input{
+    width: 10vw;
+    margin-top: 5px;
+}
+
+.filter_items>input, select{
+    width: 10vw;
+    margin-top: 5px;
+}
+
+input{
+    height: 30px;
 }
 
 select{
@@ -31,11 +66,22 @@ select{
     appearance: auto;
     box-sizing: border-box;
     align-items: center;
+    white-space: pre;
+    cursor: default;
+    margin: 0;
     border-width: 1px;
     border-style: solid;
-    width: 10vw;
-    margin-top: 5px;
+    border-image: initial;
+    border-radius: 0;
+    height: 30px;
+}
 
+option{
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0 2px 1px ;
 }
 
 .poke-container{
@@ -49,6 +95,14 @@ select{
 }
 
 .pokemon{
+    background: linear-gradient(white,white);
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(100,100,100,0.5);
+    margin: 30px;
+    padding: 15px;
+    text-align: center;
+}
+#pokemon__card{
     background: linear-gradient(white,white);
     border-radius: 10px;
     box-shadow: 0 3px 15px rgba(100,100,100,0.5);
@@ -94,6 +148,9 @@ select{
     margin: 15px 0 7px;
     letter-spacing: 1px;
     font-size: 0.8em;
+}
+.tile-card{
+
 }
 
 .poke_card{
@@ -213,8 +270,8 @@ select{
 
 .enrty-container{
     width: 40em;
-    height: 80px;
-    padding: 5px;
+    height: 90px;
+    padding: 1px;
 }
 
 .ability-container{

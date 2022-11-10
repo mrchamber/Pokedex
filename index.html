@@ -11,20 +11,26 @@
 </head>
 <body>
 <h1>Pokedex</h1>
-<div class="select-container" id="select-container">
-   <div>Region</div>
-    <select name="region" id="region">
-        <option value="generation1">Kanto</option>
-        <option value="generation2">Johto</option>
-        <option value="generation3">Hoenn</option>
-        <option value="generation4">Sinnoh</option>
-        <option value="generation5">Unova</option>
-        <option value="generation6">Kalos</option>
-        <option value="generation7">Alola</option>
-        <option value="generation8">Galar</option>
-    </select>
+<div class="filter_container">
+    <div class="filter_items">
+        <label>Region</label>
+        <select name="region" id="region">
+            <option value="generation1">Kanto</option>
+            <option value="generation2">Johto</option>
+            <option value="generation3">Hoenn</option>
+            <option value="generation4">Sinnoh</option>
+            <option value="generation5">Unova</option>
+            <option value="generation6">Kalos</option>
+            <option value="generation7">Alola</option>
+            <option value="generation8">Galar</option>
+        </select>
+    </div>
+    <div class="filter_items">
+        <label>Search</label>
+        <div class="search__container" id="search__containerID"></div>
+    </div>
 </div>
-<div class="search-container" id="search-container"></div>
+
 <div class="poke-container" id="poke-container"></div>
 <script src="app.js"></script>
 </body>

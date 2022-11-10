@@ -1,4 +1,12 @@
 const poke_container = document.getElementById("poke-container");
+const SearchContainer = document.getElementById("search__containerID");
+
+const SearchElement = document.createElement("input");
+SearchElement.setAttribute("type", "text");
+SearchElement.setAttribute("name", "searchBar");
+SearchElement.setAttribute("placeholder", "Search...");
+SearchContainer.appendChild(SearchElement);
+
 const pokeCache = {};
 let pokemon_count = 905;
 
@@ -49,9 +57,8 @@ const fetchPokemon =  async () => {
     for (let i = 1; i <= pokemon_count; i++) {
         await getPokemon(i);
     }
-
+    createSearchFilter();
 }
-
 
 const  createPokemonCard = (pokemon) => {
     const pokemonEl = document.createElement('div');
@@ -59,13 +66,12 @@ const  createPokemonCard = (pokemon) => {
 
 
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
+    pokemonEl.setAttribute("id", name);
     const id = pokemon.id.toString().padStart(3,'0')
     const generation = pokemon.generation
     const color = colors[generation]
 
     pokemonEl.style.background = color;
-
-    //console.log(Object.values(pokemon).filter(gen => pokemon.generation === document.getElementById("region")));
 
 
     const pokemonHTMLString = `
@@ -79,10 +85,13 @@ const  createPokemonCard = (pokemon) => {
             </div>
      </div>
             `
+    pokemonEl.setAttribute("class", "pokemon");
     pokemonEl.innerHTML = pokemonHTMLString;
 
 
     poke_container.appendChild(pokemonEl)
+
+    createSearchFilter(name);
 
 };
 
@@ -202,4 +211,19 @@ const closeCard = () => {
     card.parentElement.removeChild(card)
 }
 
+
 fetchPokemon();
+
+const createSearchFilter = (pokemonData) => {
+    const cards = document.querySelectorAll(".pokemon");
+    SearchElement.addEventListener("keyup", (event) => {
+        const val = event.target.value.toLowerCase();
+        cards.forEach((card) => {
+            if (card.id.toLowerCase().includes(val)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+};
