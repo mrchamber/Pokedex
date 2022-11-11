@@ -25,6 +25,7 @@ let tempPoke;
 
 //look by query, do gens since data is avilable, put info in new array (use .map or .filter)
 
+/*Colors for the generations*/
 const colors = {
     generation1: "linear-gradient(145deg, " +'#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' +")",
     generation2: "linear-gradient(145deg, " +'#daa520' + ", " + '#c0c0c0' + ", " + '#4fd9ff' +")",
@@ -37,7 +38,7 @@ const colors = {
     generation85: "linear-gradient(145deg, " +'#fad709' + ", " + '#f1f4f4' + ", " + '#5e6365' +")",
     generation9: "linear-gradient(145deg, " +'#c91421' + ", " + '#632ea6' + ")",
 }
-
+/*Colors for the types*/
 const infoColors = {
     Bug: '#A6B91A',
     Dark: '#705746',
@@ -58,7 +59,7 @@ const infoColors = {
     Steel: '#B7B7CE',
     Water: '#6390F0',
 }
-
+/* This for the load screen no touch Ant*/
 function onReady(callback) {
     const intervalId = window.setInterval(function () {
         if (document.getElementsByTagName('body')[0] !== undefined) {
@@ -76,11 +77,11 @@ onReady(function (){
     setVisible('.page', true);
     setVisible('#loading', false)
 })
-
+/*Clears the poke-container for the Gens/Region*/
 function clearBox(element){
     document.getElementById("poke-container").innerHTML = "";
 }
-
+/*Changes the  i and pokemon_count for the fetch function. Which is triggered by the select change*/
 RegionElement.addEventListener('change', function handleChangeRegion (event){
     if (event.target.value === 'Kanto'){
         pokemon_count = 151;
@@ -227,7 +228,7 @@ const  createFilter = (pokemon) => {
                 <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemon.id}.png">
             </div>
             <div class="info">
-                <span class="number">#${pokemon.id.toString().padStart(3,'0')}</span>
+                <span class="number">${pokemon.id.toString().padStart(3,'0')}</span>
                 <h3 class="name">${pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h3>
             </div>
      </div>
@@ -398,40 +399,39 @@ function sortPokemons (array, attr){
     array.forEach(pokemon => createFilter(pokemon))
 }
 
-function filterPokemons(array, type){
+function filterPokemons(array,pokeT){
     poke_container.innerHTML = ""
-    //array = array.filter(pokemon => pokemon.types[0].type.name === type)
-    console.log(array);
-    console.log(type)
-    /*array.forEach((pokemon) => {
+    array = array.filter((type)=> type.type.T1 === e.target.value || type.type.T2 === pokeT)
+    array.forEach((pokemon) => {
         filterPokemons(pokemon)
-    })*/
-
-    //console.log(array);
+    })
 }
 
 SortElement.addEventListener('change', () =>{
     sortPokemons(tempPoke, SortElement.value)
 })
 
+
 TypeElement.addEventListener('change', (e) => {
     tempPoke = pokemons
     if (TypeList.value === e.target.value) {
-        const test = Object.values(tempPoke).filter(gen => gen.type === e.target.value)
-        console.log(Object.values(tempPoke))
-        console.log(test)
-        console.log(e.target.value);
-        console.log("yerp");
+        poke_container.innerHTML = "";
+        tempPoke = tempPoke.filter((type)=> type.type.T1 === e.target.value || type.type.T2 === e.target.value);
+        tempPoke.forEach(pokemon => createFilter(pokemon))
+        return;
     }
 
     if (TypeList.value === "all types") {
         poke_container.innerHTML = "";
         SearchElement.value = ''
-        pokemons.forEach(pokemon => filterPokemons(pokemon))
+        pokemons.forEach(pokemon => createFilter(pokemon))
         return
     }
-    let pokemonType = e.target.innerText.toLowerCase();
-    tempPoke = filterPokemons(tempPoke, pokemonType)
+
+    else {
+
+    }
+
 })
 
 
