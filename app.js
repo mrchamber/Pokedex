@@ -141,19 +141,22 @@ const getPokemon = async (id) =>{
     const url = `https://updated-pokemon-apis-production.up.railway.app/Pokemon/${id}`;
     const res = await fetch(url)
     const data = await res.json()
-    pokemons.push(data);
     createPokemonCard(data);
+    pokemons.push(data);
 }
 
 
-
 const fetchPokemon =  async () => {
+    pokemons.length = 0;
     for (i ; i <= pokemon_count; i++) {
         await getPokemon(i);
     }
     tempPoke = [...pokemons]
     createSearchFilter();
+
+    console.log(pokemons);
 }
+
 
 const  createPokemonCard = (pokemon) => {
     const pokemonEl = document.createElement('div');
@@ -184,8 +187,8 @@ const  createPokemonCard = (pokemon) => {
                 <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemon.id}.png">
             </div>
             <div class="info">
-                <span class="number">#${id}</span>
-                <h3 class="name">${name}</h3>
+                <span class="number">#${pokemon.id.toString().padStart(3,'0')}</span>
+                <h3 class="name">${pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h3>
             </div>
      </div>
             `
@@ -375,7 +378,8 @@ const createSearchFilter = (pokemonData) => {
 
 function sortPokemons (array, attr){
     console.log(array);
-    console.log(attr)
+    console.log(attr);
+
     if (attr === 'id-asc') {
         array.sort((a, b) => a['id'] - b['id'])
     }
