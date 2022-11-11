@@ -18,6 +18,9 @@ const pokeCache = {};
 let pokemon_count = 151;
 let i = 1;
 
+let pokemons = [];
+let tempPoke;
+
 //look by query, do gens since data is avilable, put info in new array (use .map or .filter)
 
 const colors = {
@@ -60,7 +63,7 @@ function onReady(callback) {
             window.clearInterval(intervalId);
             callback.call(this);
         }
-    }, 10000);
+    }, 1000);
 }
 
 function setVisible(selector, visible) {
@@ -96,14 +99,14 @@ RegionElement.addEventListener('change', function handleChangeRegion (event){
         fetchPokemon();
     }
     if (event.target.value === 'Sinnoh'){
-        pokemon_count = 494;
+        pokemon_count = 493;
         i = 387;
         clearBox();
         fetchPokemon();
     }
     if (event.target.value === 'Unova'){
         pokemon_count = 649;
-        i = 495;
+        i = 494;
         clearBox();
         fetchPokemon();
     }
@@ -135,17 +138,20 @@ RegionElement.addEventListener('change', function handleChangeRegion (event){
 
 
 const getPokemon = async (id) =>{
-    const url = `https://updated-pokemon-apis-production.up.railway.app/pokemon/${id}`;
+    const url = `http://localhost:3000/Pokemon/${id}`;
     const res = await fetch(url)
     const data = await res.json()
+    pokemons.push(data);
     createPokemonCard(data);
 }
+
 
 
 const fetchPokemon =  async () => {
     for (i ; i <= pokemon_count; i++) {
         await getPokemon(i);
     }
+    tempPoke = [...pokemons]
     createSearchFilter();
 }
 
@@ -195,6 +201,41 @@ const  createPokemonCard = (pokemon) => {
     createSearchFilter(name);
 
 
+};
+
+const  createFilter = (pokemon) => {
+    const pokemonEl = document.createElement('div');
+    pokemonEl.classList.add('pokemon')
+
+    const generation = pokemon.generation
+
+    pokemonEl.setAttribute("id", pokemon.name);
+
+    const color = colors[generation]
+
+    pokemonEl.style.background = color;
+
+
+    const pokemonHTMLString = `
+     <div id="tilecard" class="tile-card" onclick="selectPokemon(${pokemon.id})">
+        <div class="img-container">
+                <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemon.id}.png">
+            </div>
+            <div class="info">
+                <span class="number">#${pokemon.id.toString().padStart(3,'0')}</span>
+                <h3 class="name">${pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h3>
+            </div>
+     </div>
+            `
+
+
+
+    pokemonEl.setAttribute("class", "pokemon");
+    pokemonEl.innerHTML = pokemonHTMLString;
+
+    poke_container.appendChild(pokemonEl)
+
+    createSearchFilter(name);
 };
 
 
@@ -330,5 +371,31 @@ const createSearchFilter = (pokemonData) => {
         });
     });
 };
+
+
+function sortPokemons (array, attr){
+    console.log(array);
+    console.log(attr)
+    if (attr === 'id-asc') {
+        array.sort((a, b) => a['id'] - b['id'])
+    }
+    if (attr === 'id-dsc') {
+        array.sort((a, b) => b['id'] - a['id'])
+    }
+    if (attr === 'name') {
+        array.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
+    }
+
+
+    poke_container.innerHTML = ""
+
+
+
+    array.forEach(pokemon => createFilter(pokemon))
+}
+
+SortElement.addEventListener('change', () =>{
+    sortPokemons(tempPoke, SortElement.value)
+})
 
 
