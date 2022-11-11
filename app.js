@@ -10,6 +10,8 @@ SearchContainer.appendChild(SearchElement);
 
 const RegionElement = document.getElementById("select-option");
 const SortElement = document.getElementById("sort");
+const TypeElement = document.getElementById("type-select");
+const TypeList = document.getElementById("type-select")
 
 const value = RegionElement.value;
 
@@ -393,13 +395,45 @@ function sortPokemons (array, attr){
 
     poke_container.innerHTML = ""
 
-
-
     array.forEach(pokemon => createFilter(pokemon))
+}
+
+function filterPokemons(array, type){
+    poke_container.innerHTML = ""
+    //array = array.filter(pokemon => pokemon.types[0].type.name === type)
+    console.log(array);
+    console.log(type)
+    /*array.forEach((pokemon) => {
+        filterPokemons(pokemon)
+    })*/
+
+    //console.log(array);
 }
 
 SortElement.addEventListener('change', () =>{
     sortPokemons(tempPoke, SortElement.value)
 })
+
+TypeElement.addEventListener('change', (e) => {
+    tempPoke = pokemons
+    if (TypeList.value === e.target.value) {
+        const test = Object.values(tempPoke).filter(gen => gen.type === e.target.value)
+        console.log(Object.values(tempPoke))
+        console.log(test)
+        console.log(e.target.value);
+        console.log("yerp");
+    }
+
+    if (TypeList.value === "all types") {
+        poke_container.innerHTML = "";
+        SearchElement.value = ''
+        pokemons.forEach(pokemon => filterPokemons(pokemon))
+        return
+    }
+    let pokemonType = e.target.innerText.toLowerCase();
+    tempPoke = filterPokemons(tempPoke, pokemonType)
+})
+
+
 
 
