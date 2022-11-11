@@ -63,7 +63,7 @@ function onReady(callback) {
             window.clearInterval(intervalId);
             callback.call(this);
         }
-    }, 1000);
+    }, 5000);
 }
 
 function setVisible(selector, visible) {
@@ -138,7 +138,7 @@ RegionElement.addEventListener('change', function handleChangeRegion (event){
 
 
 const getPokemon = async (id) =>{
-    const url = `http://localhost:3000/Pokemon/${id}`;
+    const url = `https://updated-pokemon-apis-production.up.railway.app/Pokemon/${id}`;
     const res = await fetch(url)
     const data = await res.json()
     pokemons.push(data);
