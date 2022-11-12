@@ -414,18 +414,17 @@ SortElement.addEventListener('change', () =>{
 
 TypeElement.addEventListener('change', (e) => {
     tempPoke = pokemons
-    if (TypeList.value === e.target.value) {
+    if (TypeList.value === e.target.value && e.target.value !== "all types") {
         poke_container.innerHTML = "";
         tempPoke = tempPoke.filter((type)=> type.type.T1 === e.target.value || type.type.T2 === e.target.value);
+        console.log(tempPoke)
         tempPoke.forEach(pokemon => createFilter(pokemon))
         return;
     }
 
-    if (TypeList.value === "all types") {
+    if (e.target.value === "all types") {
         poke_container.innerHTML = "";
-        SearchElement.value = ''
-        pokemons.forEach(pokemon => createFilter(pokemon))
-        return
+        tempPoke.forEach(pokemon => createPokemonCard(pokemon))
     }
 
     else {
