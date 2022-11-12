@@ -156,8 +156,6 @@ const fetchPokemon =  async () => {
     }
     tempPoke = [...pokemons]
     createSearchFilter();
-
-    console.log(pokemons);
 }
 
 
@@ -168,15 +166,8 @@ const  createPokemonCard = (pokemon) => {
 
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     const generation = pokemon.generation
-    const type = Object.values(pokemon.type);
 
-    //console.log(type)
     pokemonEl.setAttribute("id", name);
-    const id = pokemon.id.toString().padStart(3,'0')
-
-    //const filteredPokemonsByType = Object.values(pokemon).filter(gen => type === "Fire");
-    //console.log('Filtered by eletric', filteredPokemonsByType);
-
 
     const color = colors[generation]
 
@@ -228,7 +219,7 @@ const  createFilter = (pokemon) => {
                 <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemon.id}.png">
             </div>
             <div class="info">
-                <span class="number">${pokemon.id.toString().padStart(3,'0')}</span>
+                <span class="number">#${pokemon.id.toString().padStart(3,'0')}</span>
                 <h3 class="name">${pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h3>
             </div>
      </div>
@@ -378,10 +369,7 @@ const createSearchFilter = (pokemonData) => {
     });
 };
 
-
 function sortPokemons (array, attr){
-    console.log(array);
-    console.log(attr);
 
     if (attr === 'id-asc') {
         array.sort((a, b) => a['id'] - b['id'])
@@ -417,20 +405,13 @@ TypeElement.addEventListener('change', (e) => {
     if (TypeList.value === e.target.value && e.target.value !== "all types") {
         poke_container.innerHTML = "";
         tempPoke = tempPoke.filter((type)=> type.type.T1 === e.target.value || type.type.T2 === e.target.value);
-        console.log(tempPoke)
         tempPoke.forEach(pokemon => createFilter(pokemon))
-        return;
     }
 
     if (e.target.value === "all types") {
         poke_container.innerHTML = "";
         tempPoke.forEach(pokemon => createPokemonCard(pokemon))
     }
-
-    else {
-
-    }
-
 })
 
 
