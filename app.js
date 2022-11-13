@@ -17,10 +17,11 @@ const value = RegionElement.value;
 
 
 const pokeCache = {};
-let pokemon_count = 151;
+let pokemon_count = 905;
 let i = 1;
 
 let pokemons = [];
+let pokemon_sel;
 let tempPoke;
 
 //look by query, do gens since data is avilable, put info in new array (use .map or .filter)
@@ -82,69 +83,11 @@ function clearBox(element){
     document.getElementById("poke-container").innerHTML = "";
 }
 /*Changes the  i and pokemon_count for the fetch function. Which is triggered by the select change*/
-RegionElement.addEventListener('change', function handleChangeRegion (event){
-    if (event.target.value === 'Kanto'){
-        pokemon_count = 151;
-        i = 1;
-        clearBox();
-        fetchPokemon();
-    }
-    if (event.target.value === 'Johto'){
-        pokemon_count = 251;
-        i = 152;
-        clearBox();
-        fetchPokemon();
-    }
-    if (event.target.value === 'Hoenn'){
-        pokemon_count = 386;
-        i = 252;
-        clearBox();
-        fetchPokemon();
-    }
-    if (event.target.value === 'Sinnoh'){
-        pokemon_count = 493;
-        i = 387;
-        clearBox();
-        fetchPokemon();
-    }
-    if (event.target.value === 'Unova'){
-        pokemon_count = 649;
-        i = 494;
-        clearBox();
-        fetchPokemon();
-    }
-    if (event.target.value === 'Kalos'){
-        pokemon_count = 721;
-        i = 650;
-        clearBox();
-        fetchPokemon();
-    }
-    if (event.target.value === 'Alola'){
-        pokemon_count = 809;
-        i = 722;
-        clearBox();
-        fetchPokemon();
-    }
-    if (event.target.value === 'Galar'){
-        pokemon_count = 898;
-        i = 810;
-        clearBox();
-        fetchPokemon();
-    }
-    if (event.target.value === 'Hisui'){
-        pokemon_count = 905;
-        i = 899;
-        clearBox();
-        fetchPokemon();
-    }
-})
-
 
 const getPokemon = async (id) =>{
     const url = `https://updated-pokemon-apis-production.up.railway.app/Pokemon/${id}`;
     const res = await fetch(url)
     const data = await res.json()
-    createPokemonCard(data);
     pokemons.push(data);
 }
 
@@ -158,22 +101,86 @@ const fetchPokemon =  async () => {
     createSearchFilter();
 }
 
+function filter(min, max) {
+    const poke = pokemons.filter(pokeman => {
+        return pokeman.id >= min && pokeman.id <= max;
+    });
+    return poke;
+}
+
+
+RegionElement.addEventListener('change', function handleChangeRegion (event){
+    if (event.target.value === 'Kanto'){
+        pokemon_sel = filter(1,151);
+        console.log(pokemon_sel);
+        clearBox();
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Johto'){
+        pokemon_sel = [...filter(152,251)];
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Hoenn'){
+        pokemon_sel = [...filter(252,386)];
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Sinnoh'){
+        pokemon_sel = [...filter(387,493)];
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Unova'){
+        pokemon_sel = filter(494,649);
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Kalos'){
+        pokemon_sel = filter(650,721);
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Alola'){
+        pokemon_sel = filter(722,809);
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Galar'){
+        pokemon_sel = filter(810,898);
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Hisui'){
+        pokemon_sel = filter(899,905);
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'All Pokemon'){
+        pokemon_sel = filter(1,905);
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemons);
+    }
+});
 
 const  createPokemonCard = (pokemon) => {
+    console.log(pokemon);
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon')
 
-
-    const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     const generation = pokemon.generation
-
-    pokemonEl.setAttribute("id", name);
-
+    //pokemonEl.setAttribute("id", name);
     const color = colors[generation]
-
     pokemonEl.style.background = color;
-
-
 
     const pokemonHTMLString = `
      <div id="tilecard" class="tile-card" onclick="selectPokemon(${pokemon.id})">
