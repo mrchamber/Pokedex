@@ -83,7 +83,7 @@ function clearBox(element){
 }
 /*Changes the  i and pokemon_count for the fetch function. Which is triggered by the select change*/
 RegionElement.addEventListener('change', function handleChangeRegion (event){
-    if (event.target.value === 'Kanto'){
+    if (event.target.value === 'Kantos'){
         pokemon_count = 151;
         i = 1;
         clearBox();
