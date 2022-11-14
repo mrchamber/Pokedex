@@ -29,6 +29,7 @@
     overflow: hidden;
     align-items: center;
     text-align: center;
+    border-radius: 10px;
 }
 
 .load_title{
@@ -306,7 +307,7 @@ y6gulohg.card-title {
 .enrty-container{
     width: 40em;
     height: 90px;
-    padding: 1px;
+    padding: 10px;
 }
 
 .ability-container{
