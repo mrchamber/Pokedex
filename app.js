@@ -369,6 +369,31 @@ const createSearchFilter = (pokemonData) => {
     });
 };
 
+RegionElement.addEventListener('change', function handleChangeRegion (event) {
+    TypeElement.addEventListener('change', (e) => {
+        tempPoke = pokemon_sel
+        if (TypeList.value === e.target.value && event.target.value !== "regions") {
+            poke_container.innerHTML = "";
+            tempPoke = tempPoke.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
+            tempPoke.forEach(pokemon => createFilter(pokemon))
+        }
+        if (TypeList.value === e.target.value && event.target.value === "regions") {
+            poke_container.innerHTML = "";
+            tempPoke = tempPoke.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
+            tempPoke.forEach(pokemon => createFilter(pokemon))
+        }
+
+        if (e.target.value === "all types" && event.target.value === "regions") {
+            poke_container.innerHTML = "";
+            pokemon_sel.forEach(pokemon => createFilter(pokemon))
+        }
+        if (e.target.value === "all types" && event.target.value !== "regions") {
+            poke_container.innerHTML = "";
+            pokemon_sel.forEach(pokemon => createFilter(pokemon))
+        }
+    })
+})
+
 function sortPokemons (array, attr){
 
     if (attr === 'id-asc') {
@@ -393,20 +418,5 @@ SortElement.addEventListener('change', () =>{
     }
     else {
         sortPokemons(pokemon_sel, SortElement.value)
-    }
-})
-
-
-TypeElement.addEventListener('change', (e) => {
-    tempPoke = pokemon_sel
-    if (TypeList.value === e.target.value && e.target.value !== "all types") {
-        poke_container.innerHTML = "";
-        tempPoke = tempPoke.filter((type)=> type.type.T1 === e.target.value || type.type.T2 === e.target.value);
-        tempPoke.forEach(pokemon => createFilter(pokemon))
-    }
-
-    if (e.target.value === "all types") {
-        poke_container.innerHTML = "";
-        pokemon_sel.forEach(pokemon => createFilter(pokemon))
     }
 })
