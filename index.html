@@ -17,6 +17,7 @@
     <div class="filter_items">
         <label>REGION</label>
         <select id="select-option">
+            <option value="regions">All Regions</option>
             <option value="Kanto">Kanto</option>
             <option value="Johto">Johto</option>
             <option value="Hoenn">Hoenn</option>
@@ -66,7 +67,7 @@
     </div>
 </div>
 <div class="page">
-<div class="poke-container" id="poke-container"></div>
+<div class="poke-container" id="poke-container" onload="load()"></div>
 <script src="app.js"></script>
 </div>
 <div id="loading"><h2 id="load_title">Loading</h2></div>
