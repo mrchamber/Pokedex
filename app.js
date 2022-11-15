@@ -1,13 +1,14 @@
 const poke_container = document.getElementById("poke-container");
+
+// Sets up for the seach bar input for the users.
 const SearchContainer = document.getElementById("search-container");
-
-
 const SearchElement = document.createElement("input");
 SearchElement.setAttribute("type", "text");
 SearchElement.setAttribute("name", "searchBar");
 SearchElement.setAttribute("placeholder", "Search...");
 SearchContainer.appendChild(SearchElement);
 
+// Sets up for the select bar input for the users.
 const RegionElement = document.getElementById("select-option");
 const SortElement = document.getElementById("sort");
 const TypeElement = document.getElementById("type-select");
@@ -80,8 +81,8 @@ onReady(function (){
 function clearBox(element){
     document.getElementById("poke-container").innerHTML = "";
 }
-/*Changes the  i and pokemon_count for the fetch function. Which is triggered by the select change*/
 
+//Pulls the whole api in one go
 let apiUrl = "https://updated-pokemon-apis-production.up.railway.app/Pokemon/"
 
 async function getPokemon(url) {
@@ -102,12 +103,14 @@ async function fetchPokemon() {
 
 fetchPokemon();
 
+//filter for the Region select bar
 function filter(min, max) {
     return pokemons.filter(pokeman => {
         return pokeman.id >= min && pokeman.id <= max;
     });
 }
 
+//user's input for the Region select will change what region(array postion) is selected on click
 RegionElement.addEventListener('change', function handleChangeRegion (event){
     if (event.target.value === 'regions'){
         pokemon_sel = pokemons
@@ -176,6 +179,7 @@ RegionElement.addEventListener('change', function handleChangeRegion (event){
     }
 });
 
+//Function that is in charged for the for loop. That takes the length of the pokemon_sel and create the pokemon cards.
 function createPokemonCard(pokemons) {
     console.log(pokemons);
     let pokemonHTMLString = "";
@@ -202,6 +206,7 @@ function createPokemonCard(pokemons) {
 
 };
 
+// this is the filter output fuction...this fucntion by be getting deleted soon
 const  createFilter = (pokemon) => {
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon')
