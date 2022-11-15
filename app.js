@@ -413,10 +413,5 @@ function sortPokemons (array, attr){
 }
 
 SortElement.addEventListener('change', () =>{
-    if (RegionElement.value === 'regions'){
-        sortPokemons(pokemons, SortElement.value)
-    }
-    else {
-        sortPokemons(pokemon_sel, SortElement.value)
-    }
+        sortPokemons(tempPoke, SortElement.value)
 })
