@@ -479,9 +479,14 @@ RegionElement.addEventListener('change', function handleChangeRegion (event) {
 
         if (event.target.value === "All Regions") {
             poke_container.innerHTML = "";
-            tempPoke = pokemon_sel
+            tempPoke = pokemons.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
+            createPokemonCard(tempPoke);
+        }
+        if (event.target.value === "All Regions" && e.target.value === "All Types") {
+            poke_container.innerHTML = "";
             createPokemonCard(pokemons);
         }
+
         if (e.target.value === "All Types" && event.target.value !== "All Regions") {
             poke_container.innerHTML = "";
             createPokemonCard(pokemon_sel);
