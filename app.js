@@ -38,20 +38,13 @@ for (let i = 0; i < type.length; i++){
     typeSelect.appendChild(option);
 }
 
-
 const SortElement = document.getElementById("sort");
-const TypeList = document.getElementById("type-select")
-
-const value = RegionElement.value;
-
 
 const pokeCache = {};
 
 let pokemons = "";
 let pokemon_sel;
 let tempPoke;
-
-//look by query, do gens since data is avilable, put info in new array (use .map or .filter)
 
 /*Colors for the generations*/
 const colors = {
@@ -87,7 +80,7 @@ const infoColors = {
     Steel: '#B7B7CE',
     Water: '#6390F0',
 }
-/* This for the load screen no touch Ant*/
+/* This for the load screen no touch Ant. I don't even know how to explain this*/
 function onReady(callback) {
     const intervalId = window.setInterval(function () {
         if (document.getElementsByTagName('body')[0] !== undefined) {
@@ -118,6 +111,7 @@ async function getPokemon(url) {
     return data;
 }
 
+//pulls pokemons info from the api
 async function fetchPokemon() {
     getPokemon(apiUrl)
         .then(data => {
@@ -130,12 +124,14 @@ async function fetchPokemon() {
 
 fetchPokemon();
 
+//Pulls pokemon by id for the region select
 function filter(min, max) {
     return pokemons.filter(pokeman => {
         return pokeman.id >= min && pokeman.id <= max;
     });
 }
 
+//Region dropdown list listener and set the temp array pokemon_sel to the filter function
 RegionElement.addEventListener('change', function handleChangeRegion (event){
     if (event.target.value === 'All Regions'){
         pokemon_sel = pokemons
@@ -209,20 +205,25 @@ function createPokemonCard(pokemons) {
     let pokemonHTMLString = "";
     for (let i = 0; i < pokemons.length; i++) {
         pokemonHTMLString += `
+            <!-- .pokemon contorls the card -->
             <div class="pokemon" data-generation="${pokemons[i].generation}" style="background: ${colors[pokemons[i].generation]}">
+                 <!-- is contorled by .pokemon -->
                  <div id="tilecard" class="tile-card" onclick="selectPokemon(${pokemons[i].id})">
+                 <!-- is contorled by .pokemon .img-container -->
                     <div class="img-container">
+                            <!-- is contorled by .pokemon .img-container img -->
                             <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemons[i].id}.png">
                         </div>
+                        <!-- is contorled by .pokemon .info -->
                         <div class="info">
+                            <!-- is contorled by .pokemon .info .number -->
                             <span class="number">#${pokemons[i].id.toString().padStart(3, '0')}</span>
+                            <!-- is contorled by .pokemon .info .name -->
                             <h3 class="name">${pokemons[i].name[0].toUpperCase() + pokemons[i].name.slice(1)}</h3>
                         </div>
                  </div>
             </div>
             `
-        // pokemonEl.setAttribute("class", "pokemon")
-
     }
     poke_container.innerHTML = pokemonHTMLString;
 
@@ -230,6 +231,7 @@ function createPokemonCard(pokemons) {
 
 };
 
+//Is getting deleted soon
 const  createFilter = (pokemon) => {
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon')
@@ -244,15 +246,23 @@ const  createFilter = (pokemon) => {
 
 
     const pokemonHTMLString = `
-     <div id="tilecard" class="tile-card" onclick="selectPokemon(${pokemon.id})">
-        <div class="img-container">
-                <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemon.id}.png">
+     <div class="pokemon" data-generation="${pokemons[i].generation}" style="background: ${colors[pokemons[i].generation]}">
+                 <!-- is contorled by .pokemon -->
+                 <div id="tilecard" class="tile-card" onclick="selectPokemon(${pokemons[i].id})">
+                 <!-- is contorled by .pokemon .img-container -->
+                    <div class="img-container">
+                            <!-- is contorled by .pokemon .img-container img -->
+                            <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemons[i].id}.png">
+                        </div>
+                        <!-- is contorled by .pokemon .info -->
+                        <div class="info">
+                            <!-- is contorled by .pokemon .info .number -->
+                            <span class="number">#${pokemons[i].id.toString().padStart(3, '0')}</span>
+                            <!-- is contorled by .pokemon .info .name -->
+                            <h3 class="name">${pokemons[i].name[0].toUpperCase() + pokemons[i].name.slice(1)}</h3>
+                        </div>
+                 </div>
             </div>
-            <div class="info">
-                <span class="number">#${pokemon.id.toString().padStart(3,'0')}</span>
-                <h3 class="name">${pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</h3>
-            </div>
-     </div>
             `
 
 
@@ -265,6 +275,7 @@ const  createFilter = (pokemon) => {
     createSearchFilter(name);
 };
 
+//Caches info for users to keep from multi network requests
 
 const selectPokemon = async (id) => {
 
@@ -286,60 +297,102 @@ const displayCard = (pokeman) => {
     const type = Object.values(pokeman.type).map((type) => type).join('/');
 
     const htmlString = `
+        <!-- is contorled by .poke_card -->
         <div class="poke_card" onclick="closeCard()">
+            <!-- is contorled by .poke-card-body -->
             <div class="poke-card-body" id="poke-card-body">
+                <!-- is contorled by .left-side -->
                 <div class="left-side">
+                    <!-- is contorled by .num -->
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
+                    <!-- is contorled by .card-name -->
                     <h2 class="card-name">${pokeman.name}</h2>
+                    <!-- is contorled by .card-title -->
                     <h2 class="card-title"><em>The ${pokeman.category} Pokemon</em></h2>
+                    <!-- is contorled by .card-img the animation is contorled by .card-img:hover and bounce-->
                     <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img" id="card-img" onclick="play()">
                     <audio id="audio" src="https://pokeimage-production.up.railway.app/pokeCry/${pokeman.id}.mp3"></audio>
+                    <!-- is contorled by nothing -->
                     <h3 class="poke-height">${type}</h3>
                     <h3 class="poke-height">${pokeman.height}</h3>
                     <h3 class="poke-height">${pokeman.weight}</h3>
                 </div>
+                <!-- .left-side ends here -->
+                <!-- is contorled by .right-side -->
                 <div class="right-side">
+                    <!-- is contorled by .section-header -->
                     <h2 class="section-header">Entry:</h2>
+                    <!-- is contorled by .enrty-container and .ability-container, .bs-container, .enrty-container -->
                     <div class="enrty-container">
                         <p class="enrty-info">${pokeman.entry}</p>
                     </div>
                     <h2 class="section-header">Abilities:</h2>
+                    <!-- is contorled by .ability-container and .ability-container, .bs-container, .enrty-container -->
                     <div class="ability-container">
+                         <!-- is contorled by .ability-info -->
                          <p class="ability-info">${ability}</p>
                     </div>
                     <h2 class="section-header">Base Stats</h2>
+                    <!-- is contorled by .bs-container and .ability-container, .bs-container, .enrty-container -->
                     <div class="bs-container">
+                        <!-- is contorled by .stat-columns -->
                         <div class="stat-columns">
+                            <!-- is contorled by .stat-name, .stat-val -->
+                            <!-- is contorled by .stat-name -->
                             <div class="stat-name">HP</div>
+                            <!-- is contorled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.HP}</div>
                         </div>
+                        <!-- is contorled by .stat-name, .stat-val -->
+                        <!-- is contorled by .stat-columns -->
                         <div class="stat-columns">
+                            <!-- is contorled by .stat-name -->
                             <div class="stat-name">Attack</div>
+                            <!-- is contorled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.Attack}</div>
                         </div>
+                        <!-- is contorled by .stat-name, .stat-val -->
+                        <!-- is contorled by .stat-columns -->
                         <div class="stat-columns">
                             <div class="stat-name">Defense</div>
+                            <!-- is contorled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.Defense}</div>
                         </div>
+                        <!-- is contorled by .stat-name, .stat-val -->
+                        <!-- is contorled by .stat-columns -->
                         <div class="stat-columns">
+                            <!-- is contorled by .stat-name -->
                             <div class="stat-name">Sp. Attack</div>
+                            <!-- is contorled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.SpAtk}</div>
                         </div>
+                        <!-- is contorled by .stat-name, .stat-val -->
+                        <!-- is contorled by .stat-columns -->
                         <div class="stat-columns">
+                            <!-- is contorled by .stat-name -->
                             <div class="stat-name">Sp. Defense</div>
+                            <!-- is contorled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.SpDef}</div>
                         </div>
+                        <!-- is contorled by .stat-name, .stat-val -->
+                        <!-- is contorled by .stat-columns -->
                         <div class="stat-columns">
+                            <!-- is contorled by .stat-name -->
                             <div class="stat-name">Speed</div>
+                            <!-- is contorled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.Speed}</div>
                         </div>
                     </div>
+                    <!-- is contorled by nothing -->
                     <div id="evoInfo">
                         <div id="evoIn"></div>
                     </div>
                 </div>
+                <!-- .right-side ends here -->
             </div>
+            <!-- .poke-card-body ends here -->
         </div>
+        <!-- .poke_card ends here -->
     `;
 
 
@@ -397,27 +450,41 @@ const createSearchFilter = (pokemonData) => {
     });
 };
 
+TypeElement.addEventListener('change', (e) => {
+    tempPoke = pokemons
+    if (typeSelect.value === e.target.value) {
+        poke_container.innerHTML = "";
+        tempPoke = tempPoke.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
+        createPokemonCard(tempPoke);
+    }
+    if (e.target.value === "All Types") {
+        poke_container.innerHTML = "";
+        createPokemonCard(pokemons);
+    }
+})
+
 RegionElement.addEventListener('change', function handleChangeRegion (event) {
     TypeElement.addEventListener('change', (e) => {
         tempPoke = pokemon_sel
         if (typeSelect.value === e.target.value && event.target.value !== "All Regions") {
             poke_container.innerHTML = "";
             tempPoke = tempPoke.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
-            tempPoke.forEach(pokemon => createFilter(pokemon))
+            createPokemonCard(tempPoke);
         }
         if (typeSelect.value === e.target.value && event.target.value === "All Regions") {
             poke_container.innerHTML = "";
             tempPoke = tempPoke.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
-            tempPoke.forEach(pokemon => createFilter(pokemon))
+            createPokemonCard(tempPoke);
         }
 
-        if (e.target.value === "All Types") {
+        if (event.target.value === "All Regions") {
             poke_container.innerHTML = "";
-            pokemons.forEach(pokemon => createFilter(pokemon))
+            tempPoke = pokemon_sel
+            createPokemonCard(pokemons);
         }
         if (e.target.value === "All Types" && event.target.value !== "All Regions") {
             poke_container.innerHTML = "";
-            pokemon_sel.forEach(pokemon => createFilter(pokemon))
+            createPokemonCard(pokemon_sel);
         }
     })
 })
@@ -441,5 +508,6 @@ function sortPokemons (array, attr){
 }
 
 SortElement.addEventListener('change', () =>{
-        sortPokemons(pokemon_sel, SortElement.value)
+        sortPokemons(tempPoke, SortElement.value)
+    console.log(RegionElement.value)
 })
