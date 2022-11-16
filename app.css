@@ -23,7 +23,7 @@
     position: fixed;
     z-index: 100;
     background-color: rgb(192,192,192);
-    background-image: url("https://media.giphy.com/media/L7J1uNyOYerSuB0CQZ/giphy.gif");
+    background-image: url("https://i.imgur.com/aMz1Qtu.gif");
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
@@ -32,8 +32,15 @@
     border-radius: 10px;
 }
 
-.load_title{
-    margin-top: 1000em;
+#loading_text{
+    font-family: 'Graduate', cursive;
+    padding-top: 90px;
+    text-align: center;
+    align-items: center;
+}
+
+#loading_text, h2{
+    font-size: 30px;
 }
 
 body{
@@ -125,7 +132,7 @@ option{
     overflow: hidden;
 }
 
-#body::-webkit-scrollbar{
+#loading::-webkit-scrollbar{
     display: none;
 }
 

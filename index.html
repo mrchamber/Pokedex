@@ -16,44 +16,11 @@
 <div class="filter_container">
     <div class="filter_items">
         <label>REGION</label>
-        <select id="select-option">
-            <option value=""></option>
-            <option value="regions">All Regions</option>
-            <option value="Kanto">Kanto</option>
-            <option value="Johto">Johto</option>
-            <option value="Hoenn">Hoenn</option>
-            <option value="Sinnoh">Sinnoh</option>
-            <option value="Unova">Unova</option>
-            <option value="Kalos">Kalos</option>
-            <option value="Alola">Alola</option>
-            <option value="Galar">Galar</option>
-            <option value="Hisui">Hisui</option>
-        </select>
+        <div class="region__container" id="region-container"></div>
     </div>
     <div class="filter_items">
-        <label>TYPE</label>
-        <select id="type-select" class="type">
-            <option value=""></option>
-            <option value="all types">All types</option>
-            <option value="Bug">Bug</option>
-            <option value="Dark">Dark</option>
-            <option value="Dragon">Dragon</option>
-            <option value="Electric">Electric</option>
-            <option value="Fairy">Fairy</option>
-            <option value="Fighting">Fighting</option>
-            <option value="Fire">Fire</option>
-            <option value="Flying">Flying</option>
-            <option value="Ghost">Ghost</option>
-            <option value="Grass">Grass</option>
-            <option value="Ground">Ground</option>
-            <option value="Ice">Ice</option>
-            <option value="Normal">Normal</option>
-            <option value="Poison">Poison</option>
-            <option value="Psychic">Psychic</option>
-            <option value="Rock">Rock</option>
-            <option value="Steel">Steel</option>
-            <option value="Water">Water</option>
-        </select>
+        <label>REGION</label>
+        <div class="type__container" id="type-container"></div>
     </div>
     <div class="filter_items">
         <label>SORT BY</label>
@@ -72,6 +39,11 @@
 <div class="poke-container" id="poke-container" onload="load()"></div>
 <script src="app.js"></script>
 </div>
-<div id="loading"><h2 id="load_title">Loading...</h2></div>
+<div id="loading">
+    <div id="loading_text">
+        <h2>Pika Pika!</h2>
+        <h6>(Pokémon roll call)</h6>
+    </div>
+</div>
 </body>
 </html>

@@ -1,17 +1,45 @@
 const poke_container = document.getElementById("poke-container");
 const SearchContainer = document.getElementById("search-container");
+const RegionElement = document.getElementById("region-container");
+const TypeElement = document.getElementById("type-container");
 
-
+/*Creates the search bar*/
 const SearchElement = document.createElement("input");
 SearchElement.setAttribute("type", "text");
 SearchElement.setAttribute("name", "searchBar");
 SearchElement.setAttribute("placeholder", "Search...");
 SearchContainer.appendChild(SearchElement);
 
-const RegionElement = document.getElementById("select-option");
+/*Creates the region select and options*/
+const region = ["All Regions", "Kanto","Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Hisui"];
+const regionSelect = document.createElement("select");
+regionSelect.id = "select-option";
+RegionElement.appendChild(regionSelect);
+
+/*Loops through array for the region options*/
+for (let i = 0; i < region.length; i++){
+    let option = document.createElement("option");
+    option.value = region[i];
+    option.text = region[i];
+    regionSelect.appendChild(option);
+}
+
+/*Creates the type select and options*/
+const type = ["All Types", "Bug","Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"];
+const typeSelect = document.createElement("select");
+typeSelect.id = "type-select";
+TypeElement.appendChild(typeSelect);
+
+/*Loops through array for the type options*/
+for (let i = 0; i < type.length; i++){
+    let option = document.createElement("option");
+    option.value = type[i];
+    option.text = type[i];
+    typeSelect.appendChild(option);
+}
+
+
 const SortElement = document.getElementById("sort");
-const TypeElement = document.getElementById("type-select");
-const TypeList = document.getElementById("type-select")
 
 const value = RegionElement.value;
 
@@ -80,7 +108,6 @@ onReady(function (){
 function clearBox(element){
     document.getElementById("poke-container").innerHTML = "";
 }
-/*Changes the  i and pokemon_count for the fetch function. Which is triggered by the select change*/
 
 let apiUrl = "https://updated-pokemon-apis-production.up.railway.app/Pokemon/"
 
@@ -109,7 +136,7 @@ function filter(min, max) {
 }
 
 RegionElement.addEventListener('change', function handleChangeRegion (event){
-    if (event.target.value === 'regions'){
+    if (event.target.value === 'All Regions'){
         pokemon_sel = pokemons
         clearBox();
         createPokemonCard(pokemons);
@@ -372,22 +399,22 @@ const createSearchFilter = (pokemonData) => {
 RegionElement.addEventListener('change', function handleChangeRegion (event) {
     TypeElement.addEventListener('change', (e) => {
         tempPoke = pokemon_sel
-        if (TypeList.value === e.target.value && event.target.value !== "regions") {
+        if (TypeList.value === e.target.value && event.target.value !== "All Regions") {
             poke_container.innerHTML = "";
             tempPoke = tempPoke.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
             tempPoke.forEach(pokemon => createFilter(pokemon))
         }
-        if (TypeList.value === e.target.value && event.target.value === "regions") {
+        if (TypeList.value === e.target.value && event.target.value === "All Regions") {
             poke_container.innerHTML = "";
             tempPoke = tempPoke.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
             tempPoke.forEach(pokemon => createFilter(pokemon))
         }
 
-        if (e.target.value === "all types" && event.target.value === "regions") {
+        if (e.target.value === "All Types") {
             poke_container.innerHTML = "";
-            pokemon_sel.forEach(pokemon => createFilter(pokemon))
+            pokemons.forEach(pokemon => createFilter(pokemon))
         }
-        if (e.target.value === "all types" && event.target.value !== "regions") {
+        if (e.target.value === "All Types" && event.target.value !== "All Regions") {
             poke_container.innerHTML = "";
             pokemon_sel.forEach(pokemon => createFilter(pokemon))
         }
