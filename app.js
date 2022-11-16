@@ -40,6 +40,7 @@ for (let i = 0; i < type.length; i++){
 
 
 const SortElement = document.getElementById("sort");
+const TypeList = document.getElementById("type-select")
 
 const value = RegionElement.value;
 
