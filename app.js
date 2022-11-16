@@ -441,5 +441,5 @@ function sortPokemons (array, attr){
 }
 
 SortElement.addEventListener('change', () =>{
-        sortPokemons(tempPoke, SortElement.value)
+        sortPokemons(pokemon_sel, SortElement.value)
 })
