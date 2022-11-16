@@ -400,12 +400,12 @@ const createSearchFilter = (pokemonData) => {
 RegionElement.addEventListener('change', function handleChangeRegion (event) {
     TypeElement.addEventListener('change', (e) => {
         tempPoke = pokemon_sel
-        if (TypeList.value === e.target.value && event.target.value !== "All Regions") {
+        if (typeSelect.value === e.target.value && event.target.value !== "All Regions") {
             poke_container.innerHTML = "";
             tempPoke = tempPoke.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
             tempPoke.forEach(pokemon => createFilter(pokemon))
         }
-        if (TypeList.value === e.target.value && event.target.value === "All Regions") {
+        if (typeSelect.value === e.target.value && event.target.value === "All Regions") {
             poke_container.innerHTML = "";
             tempPoke = tempPoke.filter((type) => type.type.T1 === e.target.value || type.type.T2 === e.target.value);
             tempPoke.forEach(pokemon => createFilter(pokemon))
