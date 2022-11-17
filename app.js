@@ -132,13 +132,6 @@ function filter(min, max) {
     });
 }
 
-window.onload = SetDefaultValue();
-
-function SetDefaultValue(){
-    const test = RegionElement.value = "All Regions"
-    console.log(RegionElement.value)
-}
-
 pokemon_sel = pokemons;
 console.log(pokemon_sel)
 
@@ -233,52 +226,7 @@ function createPokemonCard(pokemons) {
     poke_container.innerHTML = pokemonHTMLString;
 };
 
-//Is getting deleted soon
-const  createFilter = (pokemon) => {
-    const pokemonEl = document.createElement('div');
-    pokemonEl.classList.add('pokemon')
-
-    const generation = pokemon.generation
-
-    pokemonEl.setAttribute("id", pokemon.name);
-
-    const color = colors[generation]
-
-    pokemonEl.style.background = color;
-
-
-    const pokemonHTMLString = `
-     <div class="pokemon" data-generation="${pokemons[i].generation}" style="background: ${colors[pokemons[i].generation]}">
-                 <!-- is contorled by .pokemon -->
-                 <div id="tilecard" class="tile-card" onclick="selectPokemon(${pokemons[i].id})">
-                 <!-- is contorled by .pokemon .img-container -->
-                    <div class="img-container">
-                            <!-- is contorled by .pokemon .img-container img -->
-                            <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemons[i].id}.png">
-                        </div>
-                        <!-- is contorled by .pokemon .info -->
-                        <div class="info">
-                            <!-- is contorled by .pokemon .info .number -->
-                            <span class="number">#${pokemons[i].id.toString().padStart(3, '0')}</span>
-                            <!-- is contorled by .pokemon .info .name -->
-                            <h3 class="name">${pokemons[i].name[0].toUpperCase() + pokemons[i].name.slice(1)}</h3>
-                        </div>
-                 </div>
-            </div>
-            `
-
-
-
-    pokemonEl.setAttribute("class", "pokemon");
-    pokemonEl.innerHTML = pokemonHTMLString;
-
-    poke_container.appendChild(pokemonEl)
-
-    createSearchFilter(name);
-};
-
 //Caches info for users to keep from multi network requests
-
 const selectPokemon = async (id) => {
 
     if (!pokeCache[id]){
