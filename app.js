@@ -445,7 +445,7 @@ const closeCard = () => {
  */
 
 SearchElement.addEventListener("keyup", (e) => {
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase();
     poke_container.innerHTML = "";
     tempPoke = pokemon_sel.filter((poke) =>
         poke.name.toLowerCase().includes(value)
