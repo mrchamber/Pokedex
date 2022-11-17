@@ -207,18 +207,18 @@ function createPokemonCard(pokemons) {
         pokemonHTMLString += `
             <!-- .pokemon contorls the card -->
             <div class="pokemon" data-generation="${pokemons[i].generation}" style="background: ${colors[pokemons[i].generation]}">
-                 <!-- is contorled by .pokemon -->
+                 <!-- is controlled by .pokemon -->
                  <div id="tilecard" class="tile-card" onclick="selectPokemon(${pokemons[i].id})">
-                 <!-- is contorled by .pokemon .img-container -->
+                 <!-- is controlled by .pokemon .img-container -->
                     <div class="img-container">
-                            <!-- is contorled by .pokemon .img-container img -->
+                            <!-- is controlled by .pokemon .img-container img -->
                             <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemons[i].id}.png">
                         </div>
-                        <!-- is contorled by .pokemon .info -->
+                        <!-- is controlled by .pokemon .info -->
                         <div class="info">
-                            <!-- is contorled by .pokemon .info .number -->
+                            <!-- is controlled by .pokemon .info .number -->
                             <span class="number">#${pokemons[i].id.toString().padStart(3, '0')}</span>
-                            <!-- is contorled by .pokemon .info .name -->
+                            <!-- is controlled by .pokemon .info .name -->
                             <h3 class="name">${pokemons[i].name[0].toUpperCase() + pokemons[i].name.slice(1)}</h3>
                         </div>
                  </div>
@@ -247,20 +247,20 @@ const  createFilter = (pokemon) => {
 
     const pokemonHTMLString = `
      <div class="pokemon" data-generation="${pokemons[i].generation}" style="background: ${colors[pokemons[i].generation]}">
-                 <!-- is contorled by .pokemon -->
+                 <!-- is controlled by .pokemon -->
                  <div id="tilecard" class="tile-card" onclick="selectPokemon(${pokemons[i].id})">
-                 <!-- is contorled by .pokemon .img-container -->
+                 <!-- is controlled by .pokemon .img-container -->
                     <div class="img-container">
-                            <!-- is contorled by .pokemon .img-container img -->
-                            <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemons[i].id}.png">
-                        </div>
-                        <!-- is contorled by .pokemon .info -->
-                        <div class="info">
-                            <!-- is contorled by .pokemon .info .number -->
-                            <span class="number">#${pokemons[i].id.toString().padStart(3, '0')}</span>
-                            <!-- is contorled by .pokemon .info .name -->
-                            <h3 class="name">${pokemons[i].name[0].toUpperCase() + pokemons[i].name.slice(1)}</h3>
-                        </div>
+                        <!-- is controlled by .pokemon .img-container img -->
+                        <img id="poke" src="https://pokeimage-production.up.railway.app/pokeImg/${pokemons[i].id}.png">
+                    </div>
+                    <!-- is controlled by .pokemon .info -->
+                    <div class="info">
+                        <!-- is controlled by .pokemon .info .number -->
+                        <span class="number">#${pokemons[i].id.toString().padStart(3, '0')}</span>
+                        <!-- is controlled by .pokemon .info .name -->
+                        <h3 class="name">${pokemons[i].name[0].toUpperCase() + pokemons[i].name.slice(1)}</h3>
+                    </div>
                  </div>
             </div>
             `
@@ -297,93 +297,93 @@ const displayCard = (pokeman) => {
     const type = Object.values(pokeman.type).map((type) => type).join('/');
 
     const htmlString = `
-        <!-- is contorled by .poke_card -->
+        <!-- is controlled by .poke_card -->
         <div class="poke_card" onclick="closeCard()">
-            <!-- is contorled by .poke-card-body -->
+            <!-- is controlled by .poke-card-body -->
             <div class="poke-card-body" id="poke-card-body">
-                <!-- is contorled by .left-side -->
+                <!-- is controlled by .left-side -->
                 <div class="left-side">
-                    <!-- is contorled by .num -->
+                    <!-- is controlled by .num -->
                     <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
-                    <!-- is contorled by .card-name -->
+                    <!-- is controlled by .card-name -->
                     <h2 class="card-name">${pokeman.name}</h2>
-                    <!-- is contorled by .card-title -->
+                    <!-- is controlled by .card-title -->
                     <h2 class="card-title"><em>The ${pokeman.category} Pokemon</em></h2>
-                    <!-- is contorled by .card-img the animation is contorled by .card-img:hover and bounce-->
+                    <!-- is controlled by .card-img the animation is controlled by .card-img:hover and bounce-->
                     <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.id}.png" class="card-img" id="card-img" onclick="play()">
                     <audio id="audio" src="https://pokeimage-production.up.railway.app/pokeCry/${pokeman.id}.mp3"></audio>
-                    <!-- is contorled by nothing -->
+                    <!-- is controlled by nothing -->
                     <h3 class="poke-height">${type}</h3>
                     <h3 class="poke-height">${pokeman.height}</h3>
                     <h3 class="poke-height">${pokeman.weight}</h3>
                 </div>
                 <!-- .left-side ends here -->
-                <!-- is contorled by .right-side -->
+                <!-- is controlled by .right-side -->
                 <div class="right-side">
-                    <!-- is contorled by .section-header -->
+                    <!-- is controlled by .section-header -->
                     <h2 class="section-header">Entry:</h2>
-                    <!-- is contorled by .enrty-container and .ability-container, .bs-container, .enrty-container -->
+                    <!-- is controlled by .enrty-container and .ability-container, .bs-container, .enrty-container -->
                     <div class="enrty-container">
                         <p class="enrty-info">${pokeman.entry}</p>
                     </div>
                     <h2 class="section-header">Abilities:</h2>
-                    <!-- is contorled by .ability-container and .ability-container, .bs-container, .enrty-container -->
+                    <!-- is controlled by .ability-container and .ability-container, .bs-container, .enrty-container -->
                     <div class="ability-container">
-                         <!-- is contorled by .ability-info -->
+                         <!-- is controlled by .ability-info -->
                          <p class="ability-info">${ability}</p>
                     </div>
                     <h2 class="section-header">Base Stats</h2>
-                    <!-- is contorled by .bs-container and .ability-container, .bs-container, .enrty-container -->
+                    <!-- is controlled by .bs-container and .ability-container, .bs-container, .enrty-container -->
                     <div class="bs-container">
-                        <!-- is contorled by .stat-columns -->
+                        <!-- is controlled by .stat-columns -->
                         <div class="stat-columns">
-                            <!-- is contorled by .stat-name, .stat-val -->
-                            <!-- is contorled by .stat-name -->
+                            <!-- is controlled by .stat-name, .stat-val -->
+                            <!-- is controlled by .stat-name -->
                             <div class="stat-name">HP</div>
-                            <!-- is contorled by .stat-val -->
+                            <!-- is controlled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.HP}</div>
                         </div>
-                        <!-- is contorled by .stat-name, .stat-val -->
-                        <!-- is contorled by .stat-columns -->
+                        <!-- is controlled by .stat-name, .stat-val -->
+                        <!-- is controlled by .stat-columns -->
                         <div class="stat-columns">
-                            <!-- is contorled by .stat-name -->
+                            <!-- is controlled by .stat-name -->
                             <div class="stat-name">Attack</div>
-                            <!-- is contorled by .stat-val -->
+                            <!-- is controlled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.Attack}</div>
                         </div>
-                        <!-- is contorled by .stat-name, .stat-val -->
-                        <!-- is contorled by .stat-columns -->
+                        <!-- is controlled by .stat-name, .stat-val -->
+                        <!-- is controlled by .stat-columns -->
                         <div class="stat-columns">
                             <div class="stat-name">Defense</div>
-                            <!-- is contorled by .stat-val -->
+                            <!-- is controlled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.Defense}</div>
                         </div>
-                        <!-- is contorled by .stat-name, .stat-val -->
-                        <!-- is contorled by .stat-columns -->
+                        <!-- is controlled by .stat-name, .stat-val -->
+                        <!-- is controlled by .stat-columns -->
                         <div class="stat-columns">
-                            <!-- is contorled by .stat-name -->
+                            <!-- is controlled by .stat-name -->
                             <div class="stat-name">Sp. Attack</div>
-                            <!-- is contorled by .stat-val -->
+                            <!-- is controlled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.SpAtk}</div>
                         </div>
-                        <!-- is contorled by .stat-name, .stat-val -->
-                        <!-- is contorled by .stat-columns -->
+                        <!-- is controlled by .stat-name, .stat-val -->
+                        <!-- is controlled by .stat-columns -->
                         <div class="stat-columns">
-                            <!-- is contorled by .stat-name -->
+                            <!-- is controlled by .stat-name -->
                             <div class="stat-name">Sp. Defense</div>
-                            <!-- is contorled by .stat-val -->
+                            <!-- is controlled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.SpDef}</div>
                         </div>
-                        <!-- is contorled by .stat-name, .stat-val -->
-                        <!-- is contorled by .stat-columns -->
+                        <!-- is controlled by .stat-name, .stat-val -->
+                        <!-- is controlled by .stat-columns -->
                         <div class="stat-columns">
-                            <!-- is contorled by .stat-name -->
+                            <!-- is controlled by .stat-name -->
                             <div class="stat-name">Speed</div>
-                            <!-- is contorled by .stat-val -->
+                            <!-- is controlled by .stat-val -->
                             <div class="stat-val">${pokeman.stats.Speed}</div>
                         </div>
                     </div>
-                    <!-- is contorled by nothing -->
+                    <!-- is controlled by nothing -->
                     <div id="evoInfo">
                         <div id="evoIn"></div>
                     </div>
