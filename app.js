@@ -119,6 +119,7 @@ async function fetchPokemon() {
             createPokemonCard(pokemons);
         })
     pokemons = await getPokemon(apiUrl)
+    pokemon_sel = await getPokemon(apiUrl)
     console.log(pokemons);
 }
 
@@ -130,6 +131,16 @@ function filter(min, max) {
         return pokeman.id >= min && pokeman.id <= max;
     });
 }
+
+window.onload = SetDefaultValue();
+
+function SetDefaultValue(){
+    const test = RegionElement.value = "All Regions"
+    console.log(RegionElement.value)
+}
+
+pokemon_sel = pokemons;
+console.log(pokemon_sel)
 
 //Region dropdown list listener and set the temp array pokemon_sel to the filter function
 RegionElement.addEventListener('change', function handleChangeRegion (event){
