@@ -192,12 +192,6 @@ RegionElement.addEventListener('change', function handleChangeRegion (event){
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'All Pokemon'){
-        pokemon_sel = filter(1,905);
-        clearBox();
-        console.log(pokemon_sel)
-        createPokemonCard(pokemons);
-    }
 });
 
 function createPokemonCard(pokemons) {
@@ -226,9 +220,6 @@ function createPokemonCard(pokemons) {
             `
     }
     poke_container.innerHTML = pokemonHTMLString;
-
-    createSearchFilter(name);
-
 };
 
 //Is getting deleted soon
@@ -298,9 +289,12 @@ const displayCard = (pokeman) => {
 
     const htmlString = `
         <!-- is contorled by .poke_card -->
-        <div class="poke_card" onclick="closeCard()">
+        <div class="poke_card">
+       
             <!-- is contorled by .poke-card-body -->
             <div class="poke-card-body" id="poke-card-body">
+            <!-- is contorled by #closeBtn -->
+            <img src="gray%20X.png" id="closeBtn" onclick="closeCard()"> 
                 <!-- is contorled by .left-side -->
                 <div class="left-side">
                     <!-- is contorled by .num -->
@@ -435,8 +429,7 @@ const closeCard = () => {
     card.parentElement.removeChild(card)
 }
 
-
-const createSearchFilter = (pokemonData) => {
+/*const createSearchFilter = (pokemonData) => {
     const cards = document.querySelectorAll(".pokemon");
     SearchElement.addEventListener("keyup", (event) => {
         const val = event.target.value.toLowerCase();
@@ -449,6 +442,18 @@ const createSearchFilter = (pokemonData) => {
         });
     });
 };
+ */
+
+SearchElement.addEventListener("keyup", (e) => {
+    const value = e.target.value;
+    poke_container.innerHTML = "";
+    tempPoke = pokemon_sel.filter((poke) =>
+        poke.name.toLowerCase().includes(value)
+    );
+    createPokemonCard(tempPoke);
+
+});
+SearchElement.addEventListener('submit',()=> { return false})
 
 TypeElement.addEventListener('change', (e) => {
     tempPoke = pokemons
@@ -459,7 +464,8 @@ TypeElement.addEventListener('change', (e) => {
     }
     if (e.target.value === "All Types") {
         poke_container.innerHTML = "";
-        createPokemonCard(pokemons);
+        tempPoke = pokemons
+        createPokemonCard(tempPoke);
     }
 })
 
@@ -484,12 +490,14 @@ RegionElement.addEventListener('change', function handleChangeRegion (event) {
         }
         if (event.target.value === "All Regions" && e.target.value === "All Types") {
             poke_container.innerHTML = "";
-            createPokemonCard(pokemons);
+            tempPoke = pokemons
+            createPokemonCard(tempPoke);
         }
 
         if (e.target.value === "All Types" && event.target.value !== "All Regions") {
             poke_container.innerHTML = "";
-            createPokemonCard(pokemon_sel);
+            tempPoke = pokemon_sel
+            createPokemonCard(tempPoke);
         }
     })
 })
@@ -497,22 +505,21 @@ RegionElement.addEventListener('change', function handleChangeRegion (event) {
 function sortPokemons (array, attr){
 
     if (attr === 'id-asc') {
-        array.sort((a, b) => a['id'] - b['id'])
+        tempPoke = array.sort((a, b) => a['id'] - b['id'])
     }
     if (attr === 'id-dsc') {
-        array.sort((a, b) => b['id'] - a['id'])
+        tempPoke = array.sort((a, b) => b['id'] - a['id'])
     }
     if (attr === 'name') {
-        array.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
+        tempPoke = array.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
     }
 
 
     poke_container.innerHTML = ""
 
-    array.forEach(pokemon => createFilter(pokemon))
+    createPokemonCard(tempPoke);
 }
 
 SortElement.addEventListener('change', () =>{
         sortPokemons(tempPoke, SortElement.value)
-    console.log(RegionElement.value)
 })
