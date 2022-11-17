@@ -184,6 +184,32 @@ option{
     font-size: 5px;
 }
 
+#closeBtn{
+    position: absolute;
+    right: 500px;
+    top: 90px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.7;
+}
+
+button{
+    background-color: #746F72;
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    transition: transform 100ms;
+}
+
+#closeBtn:hover{
+    cursor: pointer;
+    transform: translateY(-1px);
+    box-shadow: 0px 1px 2px;
+}
+
 .poke_card{
     position: fixed;
     top: 0;
