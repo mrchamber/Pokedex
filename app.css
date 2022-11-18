@@ -174,17 +174,14 @@ option{
     font-family: 'Graduate', cursive;
     padding: 5px 10px;
     border-radius: 10px;
-    font-size: 0.8em;
+    font-size: 8px;
     color: white;
 }
 
 .pokemon .info .name{
     margin: 15px 0 7px;
     letter-spacing: 1px;
-    font-size: 0.8em;
-}
-.tile-card{
-
+    font-size: 5px;
 }
 
 #closeBtn{
@@ -382,16 +379,42 @@ button{
     font-size: 12px;
 }
 
-/*
-@media only screen and (max-width: 960px) {
 
+@media only screen and (min-width: 300px) and (max-width: 480px) {
+    .pokemon .info .name {
+        font-size: 6px;
+        padding: 10px 0;
+        color: red;
+    }
+
+    .pokemon .info .number {
+        font-size: 8px;
+        padding-bottom: 10px;
+    }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (min-width: 499px) and (max-width: 768px) {
+    .pokemon .info .name {
+        font-size: 20px;
+        padding: 10px 0;
+        color: blue;
+    }
 
+    .pokemon .info .number {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
 }
 
-@media onliy screen and (max-width: 470px) {
+@media only screen and (min-width: 769px) {
+    .pokemon .info .name {
+        font-size: 15px;
+        padding: 10px 0;
+        color: white;
+    }
 
+    .pokemon .info .number {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
 }
-*/
