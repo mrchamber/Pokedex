@@ -186,8 +186,8 @@ option{
 
 #closeBtn{
     position: absolute;
-    right: 500px;
-    top: 90px;
+    right: 300px;
+    top: 10px;
     width: 70px;
     height: 70px;
     border-radius: 50%;
