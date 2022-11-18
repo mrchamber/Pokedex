@@ -388,21 +388,6 @@ const closeCard = () => {
     card.parentElement.removeChild(card)
 }
 
-/*const createSearchFilter = (pokemonData) => {
-    const cards = document.querySelectorAll(".pokemon");
-    SearchElement.addEventListener("keyup", (event) => {
-        const val = event.target.value.toLowerCase();
-        cards.forEach((card) => {
-            if (card.id.toLowerCase().includes(val)) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    });
-};
- */
-
 SearchElement.addEventListener("keyup", (e) => {
     const value = e.target.value.toLowerCase();
     poke_container.innerHTML = "";
