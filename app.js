@@ -355,6 +355,7 @@ const displayCard = (pokeman) => {
     const pokeCry = document.getElementById("card-img")
 
     function play() {
+        pokeCry.style.animation = "bounce .5s linear";
         cry.play();
         cry.volume = .5;
     }

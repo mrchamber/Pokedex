@@ -289,9 +289,7 @@ button{
     padding-bottom: 20px;
 }
 
-.card-img:hover{
-    animation: bounce .5s linear;
-}
+/* Animation Bounce Here */
 
 @keyframes bounce {
     20%{
