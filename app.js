@@ -11,7 +11,7 @@ SearchElement.setAttribute("placeholder", "Search...");
 SearchContainer.appendChild(SearchElement);
 
 /*Creates the region select and options*/
-const region = ["All Regions", "Kanto","Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Hisui"];
+const region = ["All Regions", "Kanto","Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Hisui", "Paldea"];
 const regionSelect = document.createElement("select");
 regionSelect.id = "select-option";
 RegionElement.appendChild(regionSelect);
@@ -192,6 +192,18 @@ RegionElement.addEventListener('change', function handleChangeRegion (event){
     }
     if (event.target.value === 'Hisui'){
         pokemon_sel = filter(899,905);
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Hisui'){
+        pokemon_sel = filter(899,905);
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Paldea'){
+        pokemon_sel = filter(906,1010);
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);

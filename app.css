@@ -181,7 +181,6 @@ option{
 .pokemon .info .name{
     margin: 15px 0 7px;
     letter-spacing: 1px;
-    font-size: 5px;
 }
 
 #closeBtn{
@@ -406,7 +405,7 @@ button{
 
 @media only screen and (min-width: 769px) {
     .pokemon .info .name {
-        font-size: 15px;
+        font-size: 12px;
         padding: 10px 0;
     }
 
