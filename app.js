@@ -197,12 +197,6 @@ RegionElement.addEventListener('change', function handleChangeRegion (event){
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Hisui'){
-        pokemon_sel = filter(899,905);
-        clearBox();
-        console.log(pokemon_sel)
-        createPokemonCard(pokemon_sel);
-    }
     if (event.target.value === 'Paldea'){
         pokemon_sel = filter(906,1010);
         clearBox();
