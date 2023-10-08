@@ -11,7 +11,7 @@ SearchElement.setAttribute("placeholder", "Search...");
 SearchContainer.appendChild(SearchElement);
 
 /*Creates the region select and options*/
-const region = ["All Regions", "Kanto","Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Hisui", "Paldea"];
+const region = ["All Regions", "Kanto","Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Hisui", "Paldea", "Kitakami"];
 const regionSelect = document.createElement("select");
 regionSelect.id = "select-option";
 RegionElement.appendChild(regionSelect);
