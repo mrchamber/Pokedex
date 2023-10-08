@@ -58,6 +58,7 @@ const colors = {
     generation8: "linear-gradient(145deg, " +'#00d1f6' + ", " + '#9e2306' + ")",
     generation85: "linear-gradient(145deg, " +'#fad709' + ", " + '#f1f4f4' + ", " + '#5e6365' +")",
     generation9: "linear-gradient(145deg, " +'#c91421' + ", " + '#632ea6' + ")",
+    generation95: "linear-gradient(145deg, " +'#4c9c3f' + ", " + '#282e26' + ", " + '#22a496' + ")",
 }
 /*Colors for the types*/
 const infoColors = {
@@ -204,6 +205,12 @@ RegionElement.addEventListener('change', function handleChangeRegion (event){
     }
     if (event.target.value === 'Paldea'){
         pokemon_sel = filter(906,1010);
+        clearBox();
+        console.log(pokemon_sel)
+        createPokemonCard(pokemon_sel);
+    }
+    if (event.target.value === 'Kitakami'){
+        pokemon_sel = filter(1011,1017);
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
