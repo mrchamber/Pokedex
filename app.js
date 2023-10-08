@@ -58,7 +58,7 @@ const colors = {
     generation8: "linear-gradient(145deg, " +'#00d1f6' + ", " + '#9e2306' + ")",
     generation85: "linear-gradient(145deg, " +'#fad709' + ", " + '#f1f4f4' + ", " + '#5e6365' +")",
     generation9: "linear-gradient(145deg, " +'#c91421' + ", " + '#632ea6' + ")",
-    generation95: "linear-gradient(145deg, " +'#4c9c3f' + ", " + '#282e26' + ", " + '#22a496' + ")",
+    generation95: "linear-gradient(145deg, " +'#4c9c3f' + ", " + '#282e26' + ", " + '#22a496' + ")"
 }
 /*Colors for the types*/
 const infoColors = {
