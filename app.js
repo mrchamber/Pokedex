@@ -350,7 +350,6 @@ const displayCard = (pokeman) => {
                         </div>
                     </div>
                     <!-- is contorled by nothing -->
-                    /*<h2 class="section-header">Evolutions: </h2>
                 </div>
                 <!-- .right-side ends here -->
             </div>
