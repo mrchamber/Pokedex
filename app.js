@@ -350,26 +350,7 @@ const displayCard = (pokeman) => {
                         </div>
                     </div>
                     <!-- is contorled by nothing -->
-                    <h2 class="section-header">Evolutions: </h2>
-                    <div class="evo-container">
-                        <div class="form-container">
-                            <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.evolution.E1}.png" class="evo-img">
-                            <br>
-                            <br>
-                            <img src="next.png" class="arrow">
-                            <h6>Lv.16</h6>
-                        </div>
-                        <div class="form-container">
-                            <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.evolution.E2}.png" class="evo-img">
-                            <br>
-                            <br>
-                            <img src="next.png" class="arrow">
-                            <h6>Lv.36</h6>
-                        </div>
-                        <div class="form-container">
-                            <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.evolution.E3}.png" class="evo-img">
-                        </div>
-                    </div>
+                    /*<h2 class="section-header">Evolutions: </h2>
                 </div>
                 <!-- .right-side ends here -->
             </div>
