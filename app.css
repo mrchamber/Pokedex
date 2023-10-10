@@ -400,9 +400,9 @@ button{
 }
 
 .evo-img {
-    width: 120px;
-    height: 120px;
-    margin: auto 0;
+    width: 160px;
+    height: 140px;
+    margin: 0 10px;
 }
 
 .arrow {
@@ -410,11 +410,7 @@ button{
     height: 60px;
     align-items: center;
     justify-content: center;
-    margin: auto 0;
-}
-
-h6 {
-    margin: auto 0;
+    margin: 0;
 }
 
 div.evoNext {
