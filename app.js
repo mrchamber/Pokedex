@@ -11,13 +11,13 @@ SearchElement.setAttribute("placeholder", "Search...");
 SearchContainer.appendChild(SearchElement);
 
 /*Creates the region select and options*/
-const region = ["All Regions", "Kanto","Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Hisui", "Paldea", "Kitakami"];
+const region = ["All Regions", "Kanto", "Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Hisui", "Paldea", "Kitakami"];
 const regionSelect = document.createElement("select");
 regionSelect.id = "select-option";
 RegionElement.appendChild(regionSelect);
 
 /*Loops through array for the region options*/
-for (let i = 0; i < region.length; i++){
+for (let i = 0; i < region.length; i++) {
     let option = document.createElement("option");
     option.value = region[i];
     option.text = region[i];
@@ -25,13 +25,13 @@ for (let i = 0; i < region.length; i++){
 }
 
 /*Creates the type select and options*/
-const type = ["All Types", "Bug","Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"];
+const type = ["All Types", "Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"];
 const typeSelect = document.createElement("select");
 typeSelect.id = "type-select";
 TypeElement.appendChild(typeSelect);
 
 /*Loops through array for the type options*/
-for (let i = 0; i < type.length; i++){
+for (let i = 0; i < type.length; i++) {
     let option = document.createElement("option");
     option.value = type[i];
     option.text = type[i];
@@ -48,17 +48,17 @@ let tempPoke;
 
 /*Colors for the generations*/
 const colors = {
-    generation1: "linear-gradient(145deg, " +'#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' +")",
-    generation2: "linear-gradient(145deg, " +'#daa520' + ", " + '#c0c0c0' + ", " + '#4fd9ff' +")",
-    generation3: "linear-gradient(145deg, " +'#a00000' + ", " + '#0000a0' + ", " + '#00a000' +")",
-    generation4: "linear-gradient(145deg, " +'#aaaaff' + ", " + '#ffaaaa' + ", " + '#999999' +")",
-    generation5: "linear-gradient(145deg, " +'#444444' + ", " + '#e1e1e1' + ")",
-    generation6: "linear-gradient(145deg, " +'#6376b8' + ", " + '#ed5540' + ")",
-    generation7: "linear-gradient(145deg, " +'#f1912b' + ", " + '#5599ca' + ")",
-    generation8: "linear-gradient(145deg, " +'#00d1f6' + ", " + '#9e2306' + ")",
-    generation85: "linear-gradient(145deg, " +'#fad709' + ", " + '#f1f4f4' + ", " + '#5e6365' +")",
-    generation9: "linear-gradient(145deg, " +'#c91421' + ", " + '#632ea6' + ")",
-    generation95: "linear-gradient(145deg, " +'#4c9c3f' + ", " + '#282e26' + ", " + '#22a496' + ")"
+    generation1: "linear-gradient(145deg, " + '#1111ff' + ", " + '#ff1111' + ", " + '#ffd733' + ")",
+    generation2: "linear-gradient(145deg, " + '#daa520' + ", " + '#c0c0c0' + ", " + '#4fd9ff' + ")",
+    generation3: "linear-gradient(145deg, " + '#a00000' + ", " + '#0000a0' + ", " + '#00a000' + ")",
+    generation4: "linear-gradient(145deg, " + '#aaaaff' + ", " + '#ffaaaa' + ", " + '#999999' + ")",
+    generation5: "linear-gradient(145deg, " + '#444444' + ", " + '#e1e1e1' + ")",
+    generation6: "linear-gradient(145deg, " + '#6376b8' + ", " + '#ed5540' + ")",
+    generation7: "linear-gradient(145deg, " + '#f1912b' + ", " + '#5599ca' + ")",
+    generation8: "linear-gradient(145deg, " + '#00d1f6' + ", " + '#9e2306' + ")",
+    generation85: "linear-gradient(145deg, " + '#fad709' + ", " + '#f1f4f4' + ", " + '#5e6365' + ")",
+    generation9: "linear-gradient(145deg, " + '#c91421' + ", " + '#632ea6' + ")",
+    generation95: "linear-gradient(145deg, " + '#4c9c3f' + ", " + '#282e26' + ", " + '#22a496' + ")"
 }
 /*Colors for the types*/
 const infoColors = {
@@ -95,12 +95,12 @@ function setVisible(selector, visible) {
     document.querySelector(selector).style.display = visible ? 'block' : 'none';
 }
 
-onReady(function (){
+onReady(function () {
     setVisible('.page', true);
     setVisible('#loading', false)
 })
 /*Clears the poke-container for the Gens/Region*/
-function clearBox(element){
+function clearBox(element) {
     document.getElementById("poke-container").innerHTML = "";
 }
 
@@ -137,74 +137,74 @@ pokemon_sel = pokemons;
 console.log(pokemon_sel)
 
 //Region dropdown list listener and set the temp array pokemon_sel to the filter function
-RegionElement.addEventListener('change', function handleChangeRegion (event){
-    if (event.target.value === 'All Regions'){
+RegionElement.addEventListener('change', function handleChangeRegion(event) {
+    if (event.target.value === 'All Regions') {
         pokemon_sel = pokemons
         clearBox();
         createPokemonCard(pokemons);
     }
-    if (event.target.value === 'Kanto'){
-        pokemon_sel = filter(1,151);
+    if (event.target.value === 'Kanto') {
+        pokemon_sel = filter(1, 151);
         console.log(pokemon_sel);
         clearBox();
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Johto'){
-        pokemon_sel = filter(152,251);
+    if (event.target.value === 'Johto') {
+        pokemon_sel = filter(152, 251);
         // clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Hoenn'){
-        pokemon_sel = [...filter(252,386)];
+    if (event.target.value === 'Hoenn') {
+        pokemon_sel = [...filter(252, 386)];
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Sinnoh'){
-        pokemon_sel = [...filter(387,493)];
+    if (event.target.value === 'Sinnoh') {
+        pokemon_sel = [...filter(387, 493)];
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Unova'){
-        pokemon_sel = filter(494,649);
+    if (event.target.value === 'Unova') {
+        pokemon_sel = filter(494, 649);
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Kalos'){
-        pokemon_sel = filter(650,721);
+    if (event.target.value === 'Kalos') {
+        pokemon_sel = filter(650, 721);
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Alola'){
-        pokemon_sel = filter(722,809);
+    if (event.target.value === 'Alola') {
+        pokemon_sel = filter(722, 809);
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Galar'){
-        pokemon_sel = filter(810,898);
+    if (event.target.value === 'Galar') {
+        pokemon_sel = filter(810, 898);
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Hisui'){
-        pokemon_sel = filter(899,905);
+    if (event.target.value === 'Hisui') {
+        pokemon_sel = filter(899, 905);
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Paldea'){
-        pokemon_sel = filter(906,1010);
+    if (event.target.value === 'Paldea') {
+        pokemon_sel = filter(906, 1010);
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
     }
-    if (event.target.value === 'Kitakami'){
-        pokemon_sel = filter(1011,1017);
+    if (event.target.value === 'Kitakami') {
+        pokemon_sel = filter(1011, 1017);
         clearBox();
         console.log(pokemon_sel)
         createPokemonCard(pokemon_sel);
@@ -242,14 +242,14 @@ function createPokemonCard(pokemons) {
 //Caches info for users to keep from multi network requests
 const selectPokemon = async (id) => {
 
-    if (!pokeCache[id]){
+    if (!pokeCache[id]) {
         const url = `https://updated-pokemon-apis-production.up.railway.app/pokemon/${id}`;
         const res = await fetch(url);
         const pokeman = await res.json();
         pokeCache[id] = pokeman;
         displayCard(pokeman);
     }
-    else{
+    else {
         displayCard(pokeCache[id]);
     }
 
@@ -270,7 +270,7 @@ const displayCard = (pokeman) => {
                 <!-- is contorled by .left-side -->
                 <div class="left-side">
                     <!-- is contorled by .num -->
-                    <h1 class="num">#${pokeman.id.toString().padStart(3,'0')}</h1>
+                    <h1 class="num">#${pokeman.id.toString().padStart(3, '0')}</h1>
                     <!-- is contorled by .card-name -->
                     <h2 class="card-name">${pokeman.name}</h2>
                     <!-- is contorled by .card-title -->
@@ -349,6 +349,30 @@ const displayCard = (pokeman) => {
                             <div class="stat-val">${pokeman.stats.Speed}</div>
                         </div>
                     </div>
+                    <h2 class="section-header">Evolutions: </h2>
+                    <div class="evo-container">
+                        <div class="form-container">
+                            <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.evolution.E1.img}.png" class="evo-img">
+                            <div class = "evoNext">
+                                <br>
+                                <br>
+                                <img src="next.png" class="arrow">
+                                <span class = "caption">${pokeman.evolution.E1.way}</span>
+                            </div>
+                        </div>
+                        <div class="form-container">
+                            <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.evolution.E2.img}.png" class="evo-img">
+                            <div class = "evoNext">
+                                <br>
+                                <br>
+                                <img src="next.png" class="arrow">
+                                <span class = "caption">${pokeman.evolution.E2.way}</span>
+                            </div>
+                        </div>
+                        <div class="form-container">
+                         <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.evolution.E3.img}.png" class="evo-img">
+                        </div>
+                    </div>
                     <!-- is contorled by nothing -->
                 </div>
                 <!-- .right-side ends here -->
@@ -384,12 +408,12 @@ const displayCard = (pokeman) => {
     const color2 = infoColors[poke_type2];
 
 
-    if(Object.keys(pokeman.type).length === 2){
-        poke.style.background = "linear-gradient(145deg, " + color + ", " + "#d3d3d3" + ", " + color2 +")";
+    if (Object.keys(pokeman.type).length === 2) {
+        poke.style.background = "linear-gradient(145deg, " + color + ", " + "#d3d3d3" + ", " + color2 + ")";
     }
 
     if (Object.keys(pokeman.type).length === 1) {
-        poke.style.background = "linear-gradient(145deg, " + color + ", " + "#d3d3d3" + ", " + color +")";
+        poke.style.background = "linear-gradient(145deg, " + color + ", " + "#d3d3d3" + ", " + color + ")";
     }
 
 };
@@ -409,7 +433,7 @@ SearchElement.addEventListener("keyup", (e) => {
     createPokemonCard(tempPoke);
 
 });
-SearchElement.addEventListener('submit',()=> { return false})
+SearchElement.addEventListener('submit', () => { return false })
 
 TypeElement.addEventListener('change', (e) => {
     tempPoke = pokemons
@@ -425,7 +449,7 @@ TypeElement.addEventListener('change', (e) => {
     }
 })
 
-RegionElement.addEventListener('change', function handleChangeRegion (event) {
+RegionElement.addEventListener('change', function handleChangeRegion(event) {
     TypeElement.addEventListener('change', (e) => {
         tempPoke = pokemon_sel
         if (typeSelect.value === e.target.value && event.target.value !== "All Regions") {
@@ -458,7 +482,7 @@ RegionElement.addEventListener('change', function handleChangeRegion (event) {
     })
 })
 
-function sortPokemons (array, attr){
+function sortPokemons(array, attr) {
 
     if (attr === 'id-asc') {
         tempPoke = array.sort((a, b) => a['id'] - b['id'])
@@ -476,6 +500,6 @@ function sortPokemons (array, attr){
     createPokemonCard(tempPoke);
 }
 
-SortElement.addEventListener('change', () =>{
-        sortPokemons(tempPoke, SortElement.value)
+SortElement.addEventListener('change', () => {
+    sortPokemons(tempPoke, SortElement.value)
 })

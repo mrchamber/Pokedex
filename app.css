@@ -417,6 +417,17 @@ h6 {
     margin: auto 0;
 }
 
+div.evoNext {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+}
+.caption {
+    display: block;
+    margin-top: 0;
+}
+
 @media only screen and (min-width: 300px) and (max-width: 480px) {
     .pokemon .info .name {
         font-size: 6px;
