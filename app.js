@@ -349,30 +349,6 @@ const displayCard = (pokeman) => {
                             <div class="stat-val">${pokeman.stats.Speed}</div>
                         </div>
                     </div>
-                    <h2 class="section-header">Evolutions: </h2>
-                    <div class="evo-container">
-                        <div class="form-container">
-                            <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.evolution.E1.img}.png" class="evo-img">
-                            <div class = "evoNext">
-                                <br>
-                                <br>
-                                <img src="next.png" class="arrow">
-                                <span class = "caption">${pokeman.evolution.E1.way}</span>
-                            </div>
-                        </div>
-                        <div class="form-container">
-                            <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.evolution.E2.img}.png" class="evo-img">
-                            <div class = "evoNext">
-                                <br>
-                                <br>
-                                <img src="next.png" class="arrow">
-                                <span class = "caption">${pokeman.evolution.E2.way}</span>
-                            </div>
-                        </div>
-                        <div class="form-container">
-                         <img src="https://pokeimage-production.up.railway.app/pokeImg/${pokeman.evolution.E3.img}.png" class="evo-img">
-                        </div>
-                    </div>
                     <!-- is contorled by nothing -->
                 </div>
                 <!-- .right-side ends here -->
